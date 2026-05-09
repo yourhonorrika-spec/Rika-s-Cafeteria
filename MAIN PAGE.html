@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" margin="0" padding="0">
+    <title>CAFE's MAIN PAGE</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        a:link {
+            color: blue;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:link {
+            color: #b38b6d;
+            background-color: transparent;
+
+        }
+
+        a:visited {
+            color: rgb(7, 37, 119);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:visited {
+            color: whitesmoke;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: purple;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: rgb(6, 253, 39);
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+         body {
+            font-family: monospace;
+            font-size: 12px;
+            letter-spacing: 3px;
+            word-spacing: 1px;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #3d3333;
+            text-align: center;
+            background-image: url(minimal-wp.jpg);
+
+        }
+
+        .dark-mode {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #f5f5f5;
+            background-image: url(dark-wood.png);
+        }
+
+        .carousel {
+            max-width:auto;
+            min-width:auto;
+            width: max-content;
+            height: 400px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            margin: 20px auto;
+            margin-left: 10px;
+            margin-right: 10px;
+            display:flex;
+            animation:scroll-carousel 15s linear infinite;
+        }
+
+        .carousel:hover  {
+            animation-play-state: paused;
+        }
+
+        .carousel img {
+            width: 300px;
+            height: 350px;
+            object-fit:inherit;
+            border-radius:20px;
+            cursor: pointer;
+        }
+       
+        @keyframes scroll-carousel {
+            0% {
+                transform: translateX(-10%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position:sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .dark-mode .nav-container {
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display:flex;
+            margin-right:10px;
+            justify-content:space-between;
+            align-items:center ;
+            max-width:1900px;
+            margin:0 auto;
+            padding:15px 20px;
+            position:relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .dark-mode .logo {
+            color: #f5f5f5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .dark-mode .nav-links a {
+            color: #f5f5f5;
+        }
+
+        .nav-links a:hover {
+            color: #b38b6d;
+            font-size: 18px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #b38b6d;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .dark-mode #theme-toggle {
+            color: #f5f5f5;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dark-mode .mobile-menu-btn {
+            color: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-mode .nav-links {
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        footer {
+            background-color: rgba(48, 18, 18, 0.8);
+            color: #f5f5f5;
+            padding: 40px 20px;
+            text-align: center;
+
+        }
+
+        .dark-mode footer {
+            background-color: rgba(30, 30, 30, 0.8);
+        }
+
+
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+            color: #ffffff;
+        }
+
+        .footer-section h3 {
+            color: #e7da1b;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p,
+        .footer-section address {
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #333;
+            margin: 15px 0;
+        }
+
+        .dark-mode hr {
+            background: #f5f5f5;
+        }
+ 
+        .menu-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-radius: 40px;
+            border-bottom: 40px;
+            margin-left: 10px;
+            border: 1px solid black;
+            width: 100% max-content;
+
+        }
+
+        .dark-mode .menu-section {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+    /* */
+        .menu-item {
+            margin-bottom: 15px;
+            padding: 15px 15px;
+            border-bottom: 1px dashed #ccc;
+            font-size: large;
+
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .dark-mode .menu-item {
+            background-color: #333;
+            color: #f5f5f5;
+
+        }
+        .item-name {
+            font-weight: bold;
+            color: #aa6c3c;
+            font-size: 1.1em;
+            float: left;
+            max-width: 230px;
+        }
+
+        .item-price {
+            float: right;
+            font-weight: bold;
+        }
+
+        .item-desc {
+            font-style: italic;
+            color: #632323;
+            margin-top: 5px;
+            max-width: 1550px;
+            align-items: center;
+        }
+
+        .dark-mode .item-desc {
+            color: #f5f5f5;
+
+        }
+
+        /* 3D Cover Section */
+        .cover-container {
+            height: 100vh;
+            perspective: 1000px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        /* Slide 1: Coffee Cup */
+        .slide-1 {
+            background: url('cup cover.jpg');
+            background-size: cover;
+            transform: translateZ(0);
+            z-index: 3;
+        }
+
+        /* Slide 2: Bakery */
+        .slide-2 {
+            background: url('dark-wood.png');
+            background-size: cover;
+            transform: rotateX(90deg) translateZ(50vh);
+            z-index: 2;
+        }
+
+        /* Slide 3: Cafe Ambience */
+        .slide-3 {
+            background: url('setting-scene.jpg');
+            background-size: cover;
+            transform: rotateX(90deg) translateZ(100vh);
+            z-index: 1;
+        }
+
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 10px rgba(248, 244, 244, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        /* Navigation Dots */
+        .cover-nav {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--accent);
+            transform: scale(1.3);
+        }
+
+        /* Designer & Developer Badge */
+        .credits {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: white;
+            z-index: 10;
+        }
+
+        /* Content Section */
+        .main-content {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ===== 3D & INTERACTIVE ELEMENTS ===== */
+        /* 1. 3D Hover Effects for Menu Items */
+        .menu-item {
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: rotateY(15deg) translateY(-10px);
+            box-shadow: 20px 20px 20px rgba(119, 92, 33, 0.3);
+            z-index: 10;
+            padding: 15px 15px;
+        }
+
+        .dark-mode .menu-item {
+            transition: all 0.5s ease, color 0.3s ease;
+        }
+
+        p {
+            text-shadow: #f8f4f4;
+            color: #ffffff;
+        }
+
+        /* 2. Coffee Bean Cursor */
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%236F4E37" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path fill="%23E3B04B" d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>'), auto;
+        }
+
+
+
+        /* 4. 3D Carousel for Events */
+        .events-carousel {
+            perspective: 1000px;
+        }
+
+        .sq-box {
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .sq-box:hover {
+            transform: rotateY(15deg) scale(1.03);
+        }
+
+
+        .dark-mode p {
+            color: #ffffff;
+        }
+
+
+        /* Pulse animation for CTAs */
+        .btn {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<div class="nav-container">
+    <nav>
+        <a href="COVER PAGE.html" class="logo" title="Cover Page">RIKA CAFETERIA</a>
+        <button class="mobile-menu-btn">☰</button>
+        <div class="nav-links">
+            <a href="MAIN PAGE.html" link title="Main Page"><b>MAIN PAGE</b></a>
+            <a href="COFFEE MENU.html" link title="Coffee Page"><b>COFFEE MENU</b>
+                <a href="BAKERY MENU.html" link title="Bakery Page"><b>BAKERY MENU </b></a>
+                <a href="EXPLORE.html" title="Explore"><b>EXPLORE</b></a>
+                <a href="ABOUT US.html" title="About Us"><b>ABOUT US</b></a>
+                <a id="theme-toggle" title="Toggle Dark Mode"><b>🌓</b></a>
+
+        </div>
+    </nav>
+</div>
+
+</head>
+
+<body>
+    <!-- 3D Cover Section -->
+    <div class="cover-container">
+        <!-- Slide 1: Main Cover -->
+        <div class="cover-slide slide-1 active-slide">
+            <div class="cover-content">
+                <h1>RIKA CAFETERIA</h1>
+                <p>Where every cup tells a story</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Bakery -->
+        <div class="cover-slide slide-2">
+            <div class="cover-content">
+                <h1>Artisan Bakery</h1>
+                <p>Freshly baked delights daily</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Ambience -->
+        <div class="cover-slide slide-3">
+            <div class="cover-content">
+                <h1>Cozy Atmosphere</h1>
+            </div>
+        </div>
+
+        <!-- Navigation Dots -->
+        <div class="cover-nav">
+            <div class="nav-dot active" data-slide="1"></div>
+            <div class="nav-dot" data-slide="2"></div>
+            <div class="nav-dot" data-slide="3"></div>
+        </div>
+
+
+    </div>
+
+    <hr>
+    <title>COFFEE MENU</title>
+    <h1 style="align-items: center;">Coffee Menu</h1>
+    <h4><b>
+            <a href="COFFEE MENU.html" link title="COFFEE MENU" alt="COFFEE MENU" target="_blank">
+                Here are yourdelicious coffee items to offer!</b>
+    </h4>
+    <a href="#explore"><b>EXPLORE</b></a>
+    <hr>
+        <div class="carousel">
+                <a href="COFFEE MENU.html"> <img src="Cappuccino.jpg" alt="Cappuccino" title="$6.0 Cappuccino"></a>
+                <a href="COFFEE MENU.html"> <img src="Espresso.jpg" alt="Espresso" title="$5.5 Espresso"></a>
+                <a href="COFFEE MENU.html"> <img src="Latte.jpg" alt="Latte" title="$5.5"></a>
+                <a href="COFFEE MENU.html"> <img src="Iced Americo.jpg" alt="Iced Americano"
+                        title="$6.0 Iced Americano"></a>
+                <a href="COFFEE MENU.html"> <img src="Mocha.jpg" alt="Mocha" title="$6.0  Hot Mocha"></a>
+                <a href="COFFEE MENU.html"> <img src="Matcha.jpg" alt="Matcha" title="$5.5 Matcha"></a>
+                <a href="COFFEE MENU.html"> <img src="Choco.jpg" alt="Hot Chocolate" title="$7.0 Hot Chocolate"></a>
+                <a href="COFFEE MENU.html"> <img src="Milk Tea.jpg" alt="Milk Tea" title="$4.5 Milk Tea"></a>
+                <a href="COFFEE MENU.html"> <img src="Cappuccino.jpg" alt="Cappuccino" title="$6.0 Cappuccino"></a>
+                <a href="COFFEE MENU.html"> <img src="Espresso.jpg" alt="Espresso" title="$5.5 Espresso"></a>
+                <a href="COFFEE MENU.html"> <img src="Latte.jpg" alt="Latte" title="$5.5"></a>
+                <a href="COFFEE MENU.html"> <img src="Iced Americo.jpg" alt="Iced Americano"
+                        title="$6.0 Iced Americano"></a>
+                <a href="COFFEE MENU.html"> <img src="Mocha.jpg" alt="Mocha" title="$6.0  Hot Mocha"></a>
+                <a href="COFFEE MENU.html"> <img src="Matcha.jpg" alt="Matcha" title="$5.5 Matcha"></a>
+                <a href="COFFEE MENU.html"> <img src="Choco.jpg" alt="Hot Chocolate" title="$7.0 Hot Chocolate"></a>
+                <a href="COFFEE MENU.html"> <img src="Milk Tea.jpg" alt="Milk Tea" title="$4.5 Milk Tea"></a>
+            
+        </div>
+
+
+    <hr>
+
+    <h1>Bakery Menu</h1>
+    <h4><b>
+            <a href="BAKERY MENU.html" title="BAKERY MENU" target="_blank">Here are your delicious bakery items to
+                offer!</a>
+        </b></h4>
+    <p><a href="#explorebakery"><b>EXPLORE</b></a></p>
+    <br>
+    <hr>
+        <div class="carousel">
+                <a href="BAKERY MENU.html"> <img src="Crossiant.jpg" alt="Croissant" title="$5.5 Croissant" /></a>
+                <a href="BAKERY MENU.html"> <img src="Egg Tart.jpg" alt="Egg Tart" title="$3.0 Egg Tart" /></a>
+                <a href="BAKERY MENU.html"> <img src="Butter Cake.jpg" alt="Butter Cake" title="$5.5 Butter Cake" /></a>
+                <a href="BAKERY MENU.html"> <img src="Cheese Sandwich.jpg" alt="Sandwich" title="$5.5 Sandwich" /></a>
+                <a href="BAKERY MENU.html"> <img src="sausage rolls.jpg" alt="Sausage Roll" title="$2 Sausage" /></a>
+                <a href="BAKERY MENU.html"> <img src="Eclair.jpg" alt="Eclair" title="$4 Cream Eclair" /></a>
+                <a href="BAKERY MENU.html"> <img src="Mochi.jpg" alt="Mochi" title="$3 Mochi" /></a>
+                <a href="BAKERY MENU.html"> <img src="Tiramisu Cake.jpg" alt="Tiramisu" title="$3 Tiramisu Cake" /></a>
+                <a href="BAKERY MENU.html"> <img src="Crossiant.jpg" alt="Croissant" title="$5.5 Croissant" /></a>
+                <a href="BAKERY MENU.html"> <img src="Egg Tart.jpg" alt="Egg Tart" title="$3.0 Egg Tart" /></a>
+                <a href="BAKERY MENU.html"> <img src="Butter Cake.jpg" alt="Butter Cake" title="$5.5 Butter Cake" /></a>
+                <a href="BAKERY MENU.html"> <img src="Cheese Sandwich.jpg" alt="Sandwich" title="$5.5 Sandwich" /></a>
+                <a href="BAKERY MENU.html"> <img src="sausage rolls.jpg" alt="Sausage Roll" title="$2 Sausage" /></a>
+                <a href="BAKERY MENU.html"> <img src="Eclair.jpg" alt="Eclair" title="$4 Cream Eclair" /></a>
+                <a href="BAKERY MENU.html"> <img src="Mochi.jpg" alt="Mochi" title="$3 Mochi" /></a>
+                <a href="BAKERY MENU.html"> <img src="Tiramisu Cake.jpg" alt="Tiramisu" title="$3 Tiramisu Cake" /></a>
+        </div>
+    
+    <hr>
+    <title>EXPLORE</title>
+
+    <h1 id="explore">COFFEE MENU</h1>
+
+    <h2 style="text-align: center;">Explore Our Menu</h2>
+
+    <div class="menu-section">
+        <h3>Where to buy:
+            <a href="COFFEE MENU.html" alt="menu" title="Go shop coffee"> Coffee Selection</a>
+        </h3>
+
+        <div class="menu-item">
+            <span class="item-name">Cappuccino</span>
+            <span class="item-price">$6</span>
+            <p class="item-desc">Smooth espresso with steamed milk and a creamy foam.</p>
+        </div>
+
+        <div class="menu-item">
+            <span class="item-name">Espresso</span>
+            <span class="item-price">$5.5</span>
+            <p class="item-desc">Strong and concentrated coffee served in small shots.</p>
+        </div>
+
+        <div class="menu-item">
+            <span class="item-name">Iced Americano</span>
+            <span class="item-price">$6</span>
+            <p class="item-desc">Espresso served over ice with a splash of water.</p>
+        </div>
+
+        <div class="menu-item">
+            <span class="item-name">Café Latte</span>
+            <span class="item-price">$5.5</span>
+            <p class="item-desc">Espresso blended with chilled milk and ice.</p>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Hot Cafe' Mocha</span>
+            <span class="item-price">$6.0</span>
+            <p class="item-desc">Espresso, chocolate syrup, steamed milk, topped with whipped cream.</p>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Matcha</span>
+            <span class="item-price">$5.5</span>
+            <p class="item-desc">Pure matcha whisked with hot water, smooth and creamy foam.</p>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Iced Chocolate</span>
+            <span class="item-price">$7.0</span>
+            <p class="item-desc">A refreshing cold chocolate drink, smooth and creamy.</p>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Milk Tea</span>
+            <span class="item-price">$4.5</span>
+            <p class="item-desc">Thick, creamy, and tasty bobba</p>
+        </div>
+    </div>
+    <div >
+        <img src="cp2.jpg" width="680px" height="400px" />
+        <img src="ck2.jpg" width="650px" height="400px" />
+    </div>
+
+    <h1 id="explorebakery">BAKERY ITEMS</h1>
+    <h2 style="text-align: center;">Explore Our Menu</h2>
+
+    <div class="menu-section">
+        <h3>Where to buy:
+            <a href="BAKERY MENU.html" alt="Menu" title="Go shop Bakery"> BAKERY SELECTION</a>
+        </h3>
+
+        <div class="menu-item">
+            <span class="item-name">Croissant</span>
+            <span class="item-price">$5.5</span>
+            <p class="item-desc">Golden, flaky buttery pastries.</p>
+        </div>
+
+        <div class="menu-item">
+            <span class="item-name">Egg Tart</span>
+            <span class="item-price">$3</span>
+            <p class="item-desc">Fluffy sweet cake made with fresh eggs.</p>
+        </div>
+
+        <div class="menu-item">
+            <span class="item-name">Butter Cake</span>
+            <span class="item-price">$5.5</span>
+            <p class="item-desc">A rich, moist cake with a buttery flavor.</p>
+        </div>
+
+        <div class="menu-item">
+            <span class="item-name">Sandwich Bread</span>
+            <span class="item-price">$5.5</span>
+            <p class="item-desc">Soft, fresh bread ideal for making sandwiches.</p>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Mini Sausage Roll</span>
+            <span class="item-price">$2.0</span>
+            <p class="item-desc">Flaky pastry filled with savory sausage.</p>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Vanilla Cream Eclair </span>
+            <span class="item-price">$4.0</span>
+            <p class="item-desc">Light pastry filled with smooth vanilla cream.</p>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Mochi</span>
+            <span class="item-price">$3.0</span>
+            <p class="item-desc">Soft, chewy, and slightly sweet.</p>
+        </div>
+        <div class="menu-item">
+            <span class="item-name">Vanilla Cream Eclair</span>
+            <span class="item-price">$4</span>
+            <p class="item-desc">Light pastry filled with smooth vanilla cream.</p>
+        </div>
+
+    </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>RIKA CAFERIA is dedicated to serving the finest coffee and pastries in a cozy, welcoming atmosphere.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <address>
+                    <p>📍 123 Sweet Street, Café Town</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>✉️ <a href="mailto:info@rikacaferia.com" style="color:white;">info@rikacaferia.com</a></p>
+                </address>
+            </div>
+
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Monday - Sunday</p>
+                <p>8:00 AM - 9:00 PM</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2023 RIKA CAFERIA. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // 3D Cover Transitions
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.cover-slide');
+            const dots = document.querySelectorAll('.nav-dot');
+            let currentSlide = 0;
+
+            // Auto-rotate slides
+            function rotateSlides() {
+                slides.forEach((slide, index) => {
+                    if (index === currentSlide) {
+                        slide.style.transform = 'translateZ(0)';
+                        slide.classList.add('active-slide');
+                    } else if (index < currentSlide) {
+                        slide.style.transform = 'rotateX(-90deg) translateZ(50vh)';
+                        slide.classList.remove('active-slide');
+                    } else {
+                        slide.style.transform = 'rotateX(90deg) translateZ(50vh)';
+                        slide.classList.remove('active-slide');
+                    }
+                });
+
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+
+                currentSlide = (currentSlide + 1) % slides.length;
+            }
+
+            // Set initial state
+            rotateSlides();
+
+            // Auto-rotate every 5 seconds
+            const slideInterval = setInterval(rotateSlides, 5000);
+
+            // Manual navigation with dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    currentSlide = index;
+                    rotateSlides();
+                });
+            });
+
+            // Pause on hover
+            const coverContainer = document.querySelector('.cover-container');
+            coverContainer.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+
+            coverContainer.addEventListener('mouseleave', () => {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(rotateSlides, 5000);
+            });
+        });
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.classList.add(savedTheme);
+                updateThemeToggle(savedTheme);
+            }
+
+            // Check system preference if no saved preference
+            if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                body.classList.add('dark-mode');
+                updateThemeToggle('dark-mode');
+            }
+
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+
+                // Save preference
+                const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+                localStorage.setItem('theme', currentTheme);
+                updateThemeToggle(currentTheme);
+            });
+
+            // Update theme toggle icon and text
+            function updateThemeToggle(theme) {
+                if (theme === 'dark-mode') {
+                    themeToggle.innerHTML = '☀️';
+                    themeToggle.title = 'Switch to Light Mode';
+                } else {
+                    themeToggle.innerHTML = '🌙';
+                    themeToggle.title = 'Switch to Dark Mode';
+                }
+            }
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        body.classList.add('dark-mode');
+                        updateThemeToggle('dark-mode');
+                    } else {
+                        body.classList.remove('dark-mode');
+                        updateThemeToggle('');
+                    }
+                }
+            });
+        });
+    </script>
+    </head>
+</body>
+
+</html>

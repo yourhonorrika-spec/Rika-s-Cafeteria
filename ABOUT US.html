@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIKA CAFETERIA - ABOUT US</title>
+    <link rel="icon" type="image/x-icon" href="coffee pic.jpg">
+    <style>
+        a:link {
+            color: blue;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: rgb(7, 37, 119);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:link {
+            color: #b38b6d;
+            background-color: transparent;
+
+        }
+
+        a:visited {
+            color: rgb(7, 37, 119);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:visited {
+            color: whitesmoke;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: purple;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: rgb(6, 253, 39);
+            background-color: transparent;
+            text-decoration: underline;
+        }
+         body {
+            font-family: monospace;
+            font-size: 12px;
+            letter-spacing: 3px;
+            word-spacing: 1px;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #3d3333;
+            text-align: center;
+            background-image: url(minimal-wp.jpg);
+
+        }
+
+        .dark-mode {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #f5f5f5;
+            background-image: url(dark-wood.png);
+        }
+
+        .carousel {
+            max-width:auto;
+            min-width:auto;
+            width: max-content;
+            height: 400px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            margin: 20px auto;
+            margin-left: 10px;
+            margin-right: 10px;
+            display:flex;
+            animation:scroll-carousel 15s linear infinite;
+        }
+
+        .carousel:hover  {
+            animation-play-state: paused;
+        }
+
+        .carousel img {
+            width: 300px;
+            height: 350px;
+            object-fit:inherit;
+            border-radius:20px;
+            cursor: pointer;
+        }
+       
+        @keyframes scroll-carousel {
+            0% {
+                transform: translateX(-10%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position:sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .dark-mode .nav-container {
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display:flex;
+            margin-right:10px;
+            justify-content:space-between;
+            align-items:center ;
+            max-width:1900px;
+            margin:0 auto;
+            padding:15px 20px;
+            position:relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .dark-mode .logo {
+            color: #f5f5f5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .dark-mode .nav-links a {
+            color: #f5f5f5;
+        }
+
+        .nav-links a:hover {
+            color: #b38b6d;
+            font-size: 18px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #b38b6d;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        /* Magazine Layout */
+        .magazine-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            column-count: 1;
+            column-gap: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .magazine-container {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .magazine-container {
+                column-count: 3;
+            }
+        }
+
+        /* Header Styles */
+        .magazine-header {
+            column-span: all;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+            border-bottom: 3px double;
+            border-bottom: 1px dashed #ac745a;
+
+        }
+
+
+        .magazine-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin: 20px 0 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+        }
+
+
+        .magazine-subtitle {
+            font-style: italic;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .magazine-date {
+            position: absolute;
+            top: 0;
+            right: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Article Styles */
+        .magazine-article {
+            break-inside: avoid;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .dark-mode .magazine-article {
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .magazine-article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-top: 0;
+            border-bottom: 1px;
+            padding-bottom: 10px;
+        }
+
+        .article-subtitle {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 3px;
+            margin: 15px 0;
+            transition: filter 0.3s ease;
+        }
+
+
+        .article-quote {
+            font-style: italic;
+            padding: 15px;
+            background-color: rgba(179, 139, 109, 0.1);
+            border-left: 3px;
+            margin: 20px 0;
+        }
+
+
+        /* Interactive Elements */
+        .interactive-box {
+            position: relative;
+            padding: 20px;
+            margin: 30px 0;
+            background-color: rgba(92, 58, 33, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .interactive-box {
+            background-color: rgba(179, 139, 109, 0.1);
+        }
+
+        .interactive-box:hover {
+            background-color: rgba(92, 58, 33, 0.2);
+            transform: scale(1.00);
+        }
+
+        .dark-mode .interactive-box:hover {
+            background-color: rgba(179, 139, 109, 0.2);
+        }
+
+
+        /* Pull Quote */
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            line-height: 1.4;
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            border-top: 1px;
+            border-bottom: 1px;
+            column-span: all;
+        }
+
+        /* Photo Gallery */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            padding: 10px;
+        }
+
+        .gallery-item {
+            height: 150px;
+            overflow: hidden;
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.95);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-mode .nav-links {
+                background-color: rgba(30, 30, 30, 0.95);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .magazine-container {
+                column-count: 1;
+            }
+        }
+
+        .drop-cap::first-letter {
+            float: left;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 0.8;
+            padding-right: 10px;
+        }
+
+        .article-meta {
+            font-size: 0.8rem;
+            color: #777;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .magazine-article {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .dark-mode #theme-toggle {
+            color: #f5f5f5;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dark-mode .mobile-menu-btn {
+            color: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-mode .nav-links {
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        footer {
+            background-color: rgba(48, 18, 18, 0.8);
+            color: #f5f5f5;
+            padding: 40px 20px;
+            text-align: center;
+
+        }
+
+        .dark-mode footer {
+            background-color: rgba(30, 30, 30, 0.8);
+        }
+
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: #e7da1b;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p,
+        .footer-section address {
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #333;
+            margin: 15px 0;
+        }
+
+        .dark-mode hr {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav>
+            <a href="COVER PAGE.html" class="logo" title="Cover Page">RIKA CAFETERIA</a>
+            <button class="mobile-menu-btn">☰</button>
+
+            <div class="nav-links">
+                <a href="MAIN PAGE.html" title="Main Page"><b>MAIN PAGE</b></a>
+                <a href="COFFEE MENU.html" title="Coffee Page"><b>COFFEE MENU</b></a>
+                <a href="BAKERY MENU.html" title="Bakery Page"><b>BAKERY MENU</b></a>
+                <a href="EXPLORE.html" tile="Explore"><b>EXPLORE</b></a>
+                <a href="ABOUT US.html" title="About Us"><b>ABOUT US</b></a>
+                <button id="theme-toggle" title="Toggle Dark Mode">🌓</button>
+            </div>
+        </nav>
+    </div>
+
+
+    </style>
+    <div class="magazine-container">
+        <div class="magazine-header">
+            <h1 class="magazine-title">THE COFFEE CHRONICLE</h1>
+            <p class="magazine-subtitle">The Official Story of Rika Cafeteria</p>
+        </div>
+
+        <!-- Pull Quote -->
+        <div class="pull-quote">
+            "Great coffee should bring people together. That's why we pour our hearts into every cup."<br>
+            - Rika Nakamura, Founder
+        </div>
+
+        <!-- Article 1 -->
+        <div class="magazine-article">
+            <div class="article-meta">
+                <span>FEATURE STORY</span>
+                <span>PAGE 3</span>
+            </div>
+            <h2 class="article-title">From Humble Beans to Community Hub</h2>
+            <p class="article-subtitle">The inspiring journey of Rika Cafeteria</p>
+
+            <img src="setting-scene.jpg" alt="Rika Cafeteria early days" class="article-image">
+
+            <p class="drop-cap">In the quiet corner of a bustling city in 2015, Rika Nakamura poured her life savings
+                into a dream - a small café that would serve not just coffee, but community. What began as a
+                300-square-foot space with three tables and an espresso machine has blossomed into one of the city's
+                most beloved gathering places.</p>
+
+            <p>"I wanted to create a space that felt like home," Nakamura recalls, stirring her signature honey lavender
+                latte. "Somewhere people could come as they are, whether they needed caffeine, conversation, or just a
+                quiet corner to read."</p>
+
+            <div class="interactive-box" onclick="alert('Visit our original location at 123 Sweet Street!')">
+                <h3>Did You Know?</h3>
+                <p>Our original espresso machine still works behind the counter today, now serving as a lucky charm for
+                    our baristas.</p>
+            </div>
+
+            <p>The turning point came in 2018 when food blogger Junichi Tanaka declared Rika's matcha latte "the best in
+                the city." Overnight, lines stretched around the block. Rather than expand hastily, Nakamura made the
+                unconventional decision to...</p>
+        </div>
+        <!--Article 1 Ending-->
+
+        <!-- Article 2 -->
+        <div class="magazine-article">
+            <div class="article-meta">
+                <span>BEHIND THE BEANS</span>
+                <span>PAGE 5</span>
+            </div>
+            <h2 class="article-title">Our Ethical Bean Journey</h2>
+            <p class="article-subtitle">Tracing the origins of your morning cup</p>
+
+            <img src="coffee handler.jpg" alt="Coffee beans being sorted" class="article-image">
+
+            <p>Every cup at Rika Cafeteria tells a global story. Our beans travel from sustainable farms in Colombia,
+                Ethiopia, and Sumatra, following what we call the "Golden Triangle" of ethical sourcing:</p>
+
+
+            <div class="article-quote">
+                "We pay 30% above fair trade prices because quality starts with how farmers are treated," explains head
+                roaster Carlos Mendez.
+            </div>
+
+            <p>This commitment extends to our seasonal specials, like the current limited-edition Rwandan single-origin
+                that supports women-led cooperatives...</p>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="magazine-article">
+            <div class="article-meta">
+                <span>MEET THE TEAM</span>
+                <span>PAGE 7</span>
+            </div>
+            <h2 class="article-title">The Faces Behind Your Favorite Brews</h2>
+            <p class="article-subtitle">Profiles of our award-winning baristas</p>
+
+            <div class="photo-gallery">
+                <div class="gallery-item">
+                    <img src="sarah.jpg" alt="Barista Sarah" />
+                </div>
+                <div class="gallery-item">
+                    <img src="Jame.jpg" alt="Barista James">
+                </div>
+                <div class="gallery-item">
+                    <img src="Miguel.jpg" alt="Barista Miguel">
+                </div>
+                <div class="gallery-item">
+                    <img src="Anna.jpg" alt="Barista Anna">
+                </div>
+            </div>
+
+            <p>Our baristas aren't just employees - they're coffee artists, each bringing unique talents to your daily
+                cup:</p>
+
+            <ul>
+                <li><strong>Sarah Chen</strong> - 2022 National Latte Art Champion</li>
+                <li><strong>James Wilson</strong> - Former chemist who applies precision to extraction</li>
+                <li><strong>Miguel Rodriguez</strong> - Third-generation coffee farmer from Guatemala</li>
+                <li><strong>Anna Petrov</strong> - Creator of our seasonal signature drinks</li>
+            </ul>
+
+            <p>"What I love most is when customers become regulars, and regulars become friends," says Chen,
+                demonstrating her signature heart-within-a-heart pour...</p>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="magazine-article">
+            <div class="article-meta">
+                <span>IN THE KITCHEN</span>
+                <span>PAGE 9</span>
+            </div>
+            <h2 class="article-title">The Magic of Our Morning Bakes</h2>
+            <p class="article-subtitle">Where tradition meets innovation</p>
+
+            <img src="chef.jpg" alt="Baker preparing pastries" class="article-image">
+
+            <p>While the café officially opens at 7am, head baker Yuki Tanaka begins her day at 3:30am, when the city
+                still sleeps. "The secret to perfect croissants," she reveals, "is in the resting time between folds."
+            </p>
+
+            <p>Our pastry program blends French technique with Japanese precision:</p>
+
+            <div class="article-quote">
+                "We use European butter but Japanese flour - the combination creates unparalleled flakiness with just
+                the right chew."
+            </div>
+
+            <p>The current bestseller is the Matcha-Almond Croissant, a Tanaka original that took 47 test batches to
+                perfect. "I wanted to capture the essence of Kyoto in a Parisian format," she explains...</p>
+
+            <div class="interactive-box" onclick="alert('Try our baking class every Saturday at 10am!')">
+                <h3>Baker's Secret</h3>
+                <p>We age our croissant dough for 36 hours - twice as long as most bakeries - for deeper flavor
+                    development.</p>
+            </div>
+        </div>
+
+        <!-- Article 5 -->
+        <div class="magazine-article">
+            <div class="article-meta">
+                <span>COMMUNITY</span>
+                <span>PAGE 11</span>
+            </div>
+            <h2 class="article-title">More Than a Café</h2>
+            <p class="article-subtitle">How we give back to the neighborhood</p>
+
+            <img src="hands together.jpg" alt="Community event at café" class="article-image">
+
+            <p>Every third Thursday, Rika Cafeteria transforms into a poetry night venue. On Sundays, local artists
+                display their work on our "community walls." And once a month, we host "Coffee Chats" where strangers
+                become friends over guided conversations.</p>
+
+            <p>These initiatives stem from Nakamura's vision: "A café should be the living room of its neighborhood."
+                Some of our most popular programs include:</p>
+
+            <ul>
+                <li><strong>Barista Basics</strong> - Free monthly workshops for aspiring coffee professionals</li>
+                <li><strong>Read & Relax</strong> - Our book exchange program with over 500 titles</li>
+                <li><strong>Pay It Forward</strong> - Customers can pre-purchase coffee for those in need</li>
+            </ul>
+
+            <p>This fall, we're launching "Coffee & Code," pairing local tech mentors with students learning
+                programming...</p>
+        </div>
+
+        <!-- Article 6 -->
+        <div class="magazine-article">
+            <div class="article-meta">
+                <span>JOIN US</span>
+                <span>PAGE 13</span>
+            </div>
+            <h2 class="article-title">We're Hiring!</h2>
+            <p class="article-subtitle">Become part of the Rika family</p>
+
+            <img src="hand shake.jpg" alt="Team working in café" class="article-image">
+
+            <p>As we prepare to open our second location, we're looking for passionate individuals to join our team.
+                What we offer:</p>
+
+            <ul>
+                <li>Competitive wages + tips (our baristas average $25/hr)</li>
+                <li>Full health benefits for 30+ hour/week employees</li>
+                <li>Paid coffee education and certification</li>
+                <li>Flexible scheduling with guaranteed minimum hours</li>
+                <li>Free meals and drinks during shifts</li>
+            </ul>
+
+            <div class="article-quote">
+                "We don't just hire employees - we invest in people who will grow with us," says operations manager
+                David Kim.
+            </div>
+
+            <p>Current openings include baristas, bakers, and a social media coordinator. No experience? Our 6-week
+                training program will teach you everything...</p>
+
+            <div class="interactive-box" onclick="window.location.href='mailto:careers@rikacafeteria.com'">
+                <h3>Apply Today</h3>
+                <p>Send your resume to careers <a href="mailto:@rikacafeteria.com">@rikacafeteria.com</a> or stop by for
+                    an application.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    </div>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>RIKA CAFERIA is dedicated to serving the finest coffee and pastries in a cozy, welcoming atmosphere.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <address>
+                    <p>📍 123 Sweet Street, Café Town</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>✉️ <a href="mailto:info@rikacaferia.com" style="color:white;">info@rikacaferia.com</a></p>
+                </address>
+            </div>
+
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Monday - Sunday</p>
+                <p>8:00 AM - 9:00 PM</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2023 RIKA CAFERIA. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.classList.add(savedTheme);
+                updateThemeToggle(savedTheme);
+            }
+
+            // Check system preference if no saved preference
+            if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                body.classList.add('dark-mode');
+                updateThemeToggle('dark-mode');
+            }
+
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+
+                // Save preference
+                const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+                localStorage.setItem('theme', currentTheme);
+                updateThemeToggle(currentTheme);
+            });
+
+            // Update theme toggle icon and text
+            function updateThemeToggle(theme) {
+                if (theme === 'dark-mode') {
+                    themeToggle.innerHTML = '☀️';
+                    themeToggle.title = 'Switch to Light Mode';
+                } else {
+                    themeToggle.innerHTML = '🌙';
+                    themeToggle.title = 'Switch to Dark Mode';
+                }
+            }
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        body.classList.add('dark-mode');
+                        updateThemeToggle('dark-mode');
+                    } else {
+                        body.classList.remove('dark-mode');
+                        updateThemeToggle('');
+                    }
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

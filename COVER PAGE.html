@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RIKA CAFERIA - Cover Page</title>
+  <style>
+    body {
+      font-family: monospace;
+      font-size: 12px;
+      letter-spacing: 3px;
+      word-spacing: 1px;
+      margin: 0;
+      padding: 0;
+      color: #3d3333;
+      text-align: center;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2"0 0 24 24"><path fill="%236F4E37" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path fill="%23E3B04B" d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>'), auto;
+      background-image: url('minimal-wp.jpg');
+    }
+
+    /* Dark Theme */
+    body.dark-mode {
+      background-color: #222;
+      color: #f5f5f5;
+      background-image: url(dark-wood.png);
+    }
+
+    .button {
+      border: none;
+      color: black;
+      padding: 15px 15px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      background-color: white;
+      border-radius: 5px;
+      opacity:0;
+      animation: to-bottom 1s ease forwards 0s;
+    }
+
+    .dark-mode .button {
+      background-color: #444;
+      color: white;
+    }
+
+    .button:hover {
+      background-color: rgb(99, 27, 1);
+      color: white;
+    }
+
+    .text {
+      text-align: center;
+      margin: 10px 0;
+      animation: to-right 1s ease forwards 1s;
+    }
+
+    .specialties {
+      margin-top: 10px;
+      line-height: 1.6;
+      animation: to-right 1s ease forwards 1.1s;
+    }
+
+    #theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      animation: to-bottom 1s ease forwards 0s;
+    }
+
+  div{
+    opacity:0;
+    animation: to-right 1s ease forwards 0.1s;
+  }
+  .p1 {
+    opacity:0;
+    animation: to-right 1s ease forwards 0.2s;
+  }
+  .p2 {
+    opacity:0;
+    animation: to-right 1s ease forwards 0.3s;
+  }
+  .p3 {
+    opacity:0;
+    animation: to-right 1s ease forwards 0.4s;
+  }
+
+  @keyframes to-bottom {
+    0% {
+      opacity:0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity:1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes to-right {
+    0% {
+      opacity:0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity:1;
+      transform: translateX(0);
+    }
+  }
+
+    .dark-mode #theme-toggle {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: rgba(48, 18, 18, 0.8);
+      color: #f5f5f5;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .dark-mode footer {
+      background-color: rgba(30, 30, 30, 0.8);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      text-align: left;
+      font-size: 12px;
+      opacity:0;
+      animation:to-bottom 1s ease forwards 0.5s;
+    }
+
+    .footer-section h3 {
+      color: #e7da1b;
+      margin-bottom: 20px;
+      animation: to-bottom 1s ease forwards 0.6s;
+    }
+
+    .footer-section p,
+    .footer-section address {
+      margin-bottom: 10px;
+      animation: to-bottom 1s ease forwards 0.7s;
+    }
+
+    .copyright {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #555;
+      animation: to-bottom 1s ease forwards 0.8s;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #333;
+      margin: 15px 0;
+    }
+
+    .dark-mode hr {
+      background: #f5f5f5;
+    }
+
+    /* Main Content */
+    .explore-header {
+      text-align: center;
+      padding: 60px 20px;
+      background: url('cover.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 350px;
+      color: cornsilk;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: left;
+      max-width: 100%;
+    }
+
+    .dark-mode .explore-header {
+      background: url('cover0.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .specialties {
+      max-width: 600px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      animation: to-bottom 1s ease forwards 0.9s;
+    }
+
+    .dark-mode .specialties {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <button id="theme-toggle">
+    <span id="theme-emoji">🌓</span>
+    <span id="theme-text">Theme</span>
+  </button>
+
+  <div class="explore-header">
+    <div class="header-content">
+      <h1 style="text-align: center;">
+        <a href="MAIN PAGE.html" target="_blank" class="button"><b>RIKA CAFETERIA</b></a>
+      </h1>
+      <div >
+  <p class="p1">Welcome to Rika Café — Where Every Sip & Bite Feels Like Home! ☕🍰</p>
+  <p class="p2">✨ <strong>Our Specialties:</strong></p>
+  <p class="p3">✔️ Premium handcrafted coffee & teas ☕</p>
+  <p class="p3">✔️ Freshly baked pastries & desserts 🍩🍰</p>
+  <p class="p3">✔️ Delicious sandwiches & healthy salads 🥪🥗</p>
+  <p class="p3">✔️ Cozy ambiance, perfect for relaxing or working 📖💻</p>
+</div>
+
+    </div>
+  </div>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>RIKA CAFERIA is dedicated to serving the finest coffee and pastries in a cozy, welcoming atmosphere.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <address>
+          <p>📍 123 Sweet Street, Café Town</p>
+          <p>📞 +1 (555) 123-4567</p>
+          <p>✉️ <a href="mailto:info@rikacaferia.com" style="color:white;">info@rikacaferia.com</a></p>
+        </address>
+      </div>
+
+      <div class="footer-section">
+        <h3>Hours</h3>
+        <p>Monday - Sunday</p>
+        <p>8:00 AM - 9:00 PM</p>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>© 2023 RIKA CAFERIA. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      body.classList.add(savedTheme);
+      updateThemeToggle(savedTheme);
+    }
+
+    // Check system preference if no saved preference
+    if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      body.classList.add('dark-mode');
+      updateThemeToggle('dark-mode');
+    }
+
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+
+      // Save preference
+      const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+      localStorage.setItem('theme', currentTheme);
+      updateThemeToggle(currentTheme);
+    });
+
+    // Update theme toggle icon and text
+    function updateThemeToggle(theme) {
+      const themeEmoji = document.getElementById('theme-emoji');
+      const themeText = document.getElementById('theme-text');
+
+      if (theme === 'dark-mode') {
+        themeEmoji.textContent = '☀️';
+        themeText.textContent = 'Light Mode';
+        themeToggle.title = 'Switch to Light Mode';
+      } else {
+        themeEmoji.textContent = '🌙';
+        themeText.textContent = 'Dark Mode';
+        themeToggle.title = 'Switch to Dark Mode';
+      }
+    }
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          body.classList.add('dark-mode');
+          updateThemeToggle('dark-mode');
+        } else {
+          body.classList.remove('dark-mode');
+          updateThemeToggle('');
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

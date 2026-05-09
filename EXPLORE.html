@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIKA CAFETERIA-EXPLORE</title>
+    <style>
+       
+        .dark-mode .menu-item {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+
+        a:link {
+            color: blue;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: rgb(7, 37, 119);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:link {
+            color: #b38b6d;
+            background-color: transparent;
+
+        }
+
+        a:visited {
+            color: rgb(7, 37, 119);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:visited {
+            color: whitesmoke;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: purple;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: rgb(6, 253, 39);
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        body {
+            font-family: monospace;
+            font-size: 12px;
+            letter-spacing: 3px;
+            word-spacing: 1px;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #3d3333;
+            text-align: center;
+            background-image: url(minimal-wp.jpg);
+
+        }
+
+        .dark-mode {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #f5f5f5;
+            background-image: url(dark-wood.png);
+        }
+
+        .carousel {
+            max-width:auto;
+            min-width:auto;
+            width: max-content;
+            height: 400px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            margin: 20px auto;
+            margin-left: 10px;
+            margin-right: 10px;
+            display:flex;
+            animation:scroll-carousel 15s linear infinite;
+        }
+
+        .carousel:hover  {
+            animation-play-state: paused;
+        }
+
+        .carousel img {
+            width: 300px;
+            height: 350px;
+            object-fit:inherit;
+            border-radius:20px;
+            cursor: pointer;
+        }
+       
+        @keyframes scroll-carousel {
+            0% {
+                transform: translateX(-10%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position:sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .dark-mode .nav-container {
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display:flex;
+            margin-right:10px;
+            justify-content:space-between;
+            align-items:center ;
+            max-width:1900px;
+            margin:0 auto;
+            padding:15px 20px;
+            position:relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .dark-mode .logo {
+            color: #f5f5f5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .dark-mode .nav-links a {
+            color: #f5f5f5;
+        }
+
+        .nav-links a:hover {
+            color: #b38b6d;
+            font-size: 18px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #b38b6d;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+    
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .dark-mode #theme-toggle {
+            color: #f5f5f5;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dark-mode .mobile-menu-btn {
+            color: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-mode .nav-links {
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        footer {
+            background-color: rgba(48, 18, 18, 0.8);
+            color: #f5f5f5;
+            padding: 40px 20px;
+            text-align: center;
+
+        }
+
+        .dark-mode footer {
+            background-color: rgba(30, 30, 30, 0.8);
+        }
+
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: #e7da1b;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p,
+        .footer-section address {
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #333;
+            margin: 15px 0;
+        }
+
+        .dark-mode hr {
+            background: #f5f5f5;
+        }
+
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #5C3A21;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: #5C3A21;
+        }
+
+        .dark-mode h1 {
+            color: rgb(189, 138, 80);
+        }
+
+        .tagline {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: rgba(255, 217, 0, 0.05);
+            border-radius: 0px;
+            border: 1px solid black;
+            width: 100% max-content;
+            height: 100% max-content;
+
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "•";
+            color: #FFD700;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        li::before {
+            content: "✓";
+            color: #FFD700;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .poster {
+                padding: 15px;
+            }
+        }
+
+        .sq-box {
+            border-radius: 10px;
+            border: 1px solid black;
+            width: 250px;
+            height: auto;
+            min-height: 200px;
+            margin: 0 10px;
+            padding: 20px;
+            scroll-snap-align: start;
+            background: white;
+            overflow-x: auto;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+            flex: 0 0 auto;
+        }
+
+        .dark-mode .sq-box {
+            background: #2d2d2d;
+            color: #f5f5f5;
+            border-color: #555;
+        }
+
+        .events-carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #b38b6d #f1f1f1;
+        }
+
+        .events-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .events-carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .events-carousel::-webkit-scrollbar-thumb {
+            background: #b38b6d;
+            border-radius: 10px;
+        }
+
+        .events-carousel::-webkit-scrollbar-thumb:hover {
+            background: #9a755d;
+        }
+
+        .menu-item {
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform-style: preserve-3d;
+        }
+
+        .menu-item:hover {
+            transform: rotateY(15deg) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(92, 58, 33, 0.3);
+        }
+
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%236F4E37" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path fill="%23E3B04B" d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>'), auto;
+        }
+
+        .hover {
+            font-size: 8rem;
+            background: url(Eclair.jpg) center;
+            background-size: cover;
+            background-clip: text;
+            color: transparent;
+            animation: animate 10s linear infinite;
+        }
+
+        @keyframes animate {
+            to {
+                background-position-x: -200px;
+                background-position-y: -200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav>
+            <a href="COVER PAGE.html" class="logo" title="Cover Page">RIKA CAFETERIA</a>
+
+            <button class="mobile-menu-btn">☰</button>
+
+            <div class="nav-links">
+                <a href="MAIN PAGE.html" link title="Main Page"><b>MAIN PAGE</b></a>
+                <a href="COFFEE MENU.html" link title="Coffee Page"><b>COFFEE MENU</b></a>
+                <a href="BAKERY MENU.html" link title="Bakery Page"><b>BAKERY MENU</b></a>
+                <a href="EXPLORE.html" title="Explore"><b>EXPLORE</b></a>
+                <a href="ABOUT US.html" title="About Us"><b>ABOUT US</b></a>
+                <button id="theme-toggle" title="Toggle Dark Mode"><b>🌓</b></button>
+            </div>
+        </nav>
+    </div>
+    <h1> *RIKA CAFETERIA* </h1>
+    <div class="hover">
+        <p class="tagline">Where Coffee Meets Community</p>
+    </div>
+    </div>
+    <img src="flavor.jpg" width="100%" height="500px" />
+
+    <div class="section">
+        <h1>Discover Rika Cafeteria</h1>
+        <p>Explore our unique coffee experiences, community events, and the passion behind every cup we serve.</p>
+        <p>Join our weekly coffee tasting events where we explore different brewing methods and coffee origins from
+            around the world.</p>
+        <p>The quality of coffee depends on several factors, including the origin of the beans, the farming
+            practices, and the roasting process.</p>
+        <p>From Seed to Cup Coffee is more than just a beverage—it's a journey that begins with carefully selected
+            seeds and ends in a perfectly brewed cup. </p>
+        <p>High-quality coffee starts with specialty-grade beans, which are hand-picked at peak ripeness, properly
+            fermented, and carefully dried to preserve their natural flavors.</p>
+
+    </div>
+
+    <img src="flavour.jpg" width="100%" height="500px" />
+
+    <div class="section">
+        <h1>What Makes Coffee Smooth?</h1>
+
+        A smooth, well-balanced coffee comes from:
+        </p>
+        <p>
+            Fresh Grinding- Beans should be ground just before brewing to maintain freshness.
+        </p>
+        <p>
+            Proper Roasting- Light to medium roasts preserve the bean's natural sweetness, while dark roasts bring
+            out deeper, caramelized notes.
+        </p>
+        <p>
+            Optimal Brewing-Methods like pour-over, French press, or espresso extract flavors evenly without
+            over-extraction (which causes bitterness).
+        </p>
+    </div>
+
+    <img src="brushing.jpg" width="100%" height="700px" />
+
+    <div class="section">
+        <h1>🍰 The Art of Smooth Bakery</h1>
+        <p>
+
+            Our pastries are designed to melt in your mouth, thanks to:
+        </p>
+        <p>
+            Premium Ingredients: European butter, slow-fermented doughs, and real vanilla.
+        </p>
+        <p>
+            Perfect Texture: Flaky croissants, velvety cheesecakes, and cloud-like muffins—every bite is effortless.
+        </p>
+        <p>
+            Pairing Perfection: Each treat complements our coffee’s notes (think dark chocolate with espresso,
+            citrus with light roasts).
+        </p>
+    </div>
+
+    <img src="baking.jpg" width="100%" height="500px" />
+
+    <div class="section">
+        <h1>🔥 The Crumbs Tell the Story</h1>
+        <p>
+            Because Joy Should Be Simple: That first bite of a warm, buttery croissant? The way a perfect macaron
+            cracks under gentle pressure? That’s the magic we live for.
+        </p>
+        <p>
+            Memories in Every Bite: We bake like it’s for our own family—because it is. Your morning ritual, your
+            celebration, your quiet moment… we’re honored to be part of it.
+        </p>
+        <p>
+            Respect for the Craft: No corners cut. Ever. If we wouldn’t serve it to our grandmothers, it doesn’t
+            leave our kitchen.
+        </p>
+    </div>
+    <div class="section">
+        <div class="events-section">
+            <h2>Upcoming Events</h2>
+
+            <div class="events-carousel">
+                <div class="sq-box">
+                    <h3>Latte Art Competition</h3>
+                    <p> Watch local baristas compete in our annual latte art championship.Prizes for audience
+                        favourites!</p>
+                    <p>4:00 PM-6:00 PM</p>
+                </div>
+
+                <div class="sq-box">
+                    <h3>Acoustic Night</h3>
+                    <p>Enjoy live acoustic performances from local musicians while sipping your favorite brew.</p>
+                    <p>7:00 PM - 9:00 PM</p>
+                </div>
+
+                <div class="sq-box">
+                    <h3>Coffee & Book Club</h3>
+                    <p>Discuss this month's selected book over specially paired coffee selections.</p>
+                    <p>6:30 PM - 8:00 PM</p>
+                </div>
+
+                <div class="sq-box">
+                    <h3>Brewing Basics</h3>
+                    <p>Learn the fundamentals of home coffee brewing from our head barista.</p>
+                    <p>3:00 PM - 4:30 PM</p>
+                </div>
+
+                <div class="sq-box">
+                    <h3> Barista/Bakers Hiring Process</h3>
+                    <p>
+                        Coffee Knowledge Test,
+                        Practical Trial,
+                        Include:Resume/CV,Brief cover letter.
+                    </p>
+                    <br>
+                    <a href="mailto:events@rika.info.com">Deadline:End of the August.</a>
+                </div>
+
+                <div class="sq-box">
+                    <h3> Baking Class</h3>
+                    <p>
+                        Master the art with our head baker.</p>
+                    <p> Take home your own starter!</p>
+                    <strong>
+                        August 5 |
+
+                        <p>10:00 AM-12:00 PM
+                    </strong>
+                    </p>
+
+                </div>
+
+                <div class="sq-box">
+                    <h3>Weekend special </h3>
+                    <p>
+                        Buy 1 Get 1 Free</p>
+                    <p>
+                        All iced drinks-get double the joy.</p>
+
+                    <p>
+                        <b>Weekends 12-3 PM </b>
+                    </p>
+                </div>
+
+                <div class="sq-box">
+                    <h3>Happy Hour </h3>
+                    <p>
+                        Happy Hour Special:
+                        Weekend Special
+                        Buy 1 Get 1 free</p>
+                    <p> Weekend: Buy any drink, get double the joy!</p>
+                    <p> 3:00-5:00PM</p>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>RIKA CAFERIA is dedicated to serving the finest coffee and pastries in a cozy, welcoming atmosphere.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <address>
+                    <p>📍 123 Sweet Street, Café Town</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>✉️ <a href="mailto:info@rikacaferia.com" style="color:white;">info@rikacaferia.com</a></p>
+                </address>
+            </div>
+
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Monday - Sunday</p>
+                <p>8:00 AM - 9:00 PM</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2023 RIKA CAFERIA. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.classList.add(savedTheme);
+                updateThemeToggle(savedTheme);
+            }
+
+            // Check system preference if no saved preference
+            if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                body.classList.add('dark-mode');
+                updateThemeToggle('dark-mode');
+            }
+
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+
+                // Save preference
+                const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+                localStorage.setItem('theme', currentTheme);
+                updateThemeToggle(currentTheme);
+            });
+
+            // Update theme toggle icon and text
+            function updateThemeToggle(theme) {
+                if (theme === 'dark-mode') {
+                    themeToggle.innerHTML = '☀️';
+                    themeToggle.title = 'Switch to Light Mode';
+                } else {
+                    themeToggle.innerHTML = '🌙';
+                    themeToggle.title = 'Switch to Dark Mode';
+                }
+            }
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        body.classList.add('dark-mode');
+                        updateThemeToggle('dark-mode');
+                    } else {
+                        body.classList.remove('dark-mode');
+                        updateThemeToggle('');
+                    }
+                }
+            });
+        });
+        document.getElementById('mode-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dev-mode');
+
+            // Fun console message
+            if (document.body.classList.contains('dev-mode')) {
+                console.log("%cDEV MODE ACTIVATED!", "color: #E3B04B; font-size: 20px; font-weight: bold;");
+            } else {
+                console.log("%cDESIGN MODE ACTIVATED!", "color: #b38b6d; font-size: 20px; font-weight: bold;");
+            }
+        });
+    </script>
+</body>
+
+</html>

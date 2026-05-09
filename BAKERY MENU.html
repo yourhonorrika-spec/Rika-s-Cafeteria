@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIKA CAFETERIA-BAKERY MENU </title>
+    <style>
+        .dark-mode .menu-item {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+
+        a:link {
+            color: blue;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: rgb(7, 37, 119);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:link {
+            color: #b38b6d;
+            background-color: transparent;
+
+        }
+
+        a:visited {
+            color: rgb(7, 37, 119);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:visited {
+            color: whitesmoke;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: purple;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: rgb(6, 253, 39);
+            background-color: transparent;
+            text-decoration: underline;
+        }
+         body {
+            font-family: monospace;
+            font-size: 12px;
+            letter-spacing: 3px;
+            word-spacing: 1px;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #3d3333;
+            text-align: center;
+            background-image: url(minimal-wp.jpg);
+
+        }
+
+        .dark-mode {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #f5f5f5;
+            background-image: url(dark-wood.png);
+        }
+
+        .carousel {
+            max-width:auto;
+            min-width:auto;
+            width: max-content;
+            height: 400px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            margin: 20px auto;
+            margin-left: 10px;
+            margin-right: 10px;
+            display:flex;
+            animation:scroll-carousel 15s linear infinite;
+        }
+
+        .carousel:hover  {
+            animation-play-state: paused;
+        }
+
+        .carousel img {
+            width: 300px;
+            height: 350px;
+            object-fit:inherit;
+            border-radius:20px;
+            cursor: pointer;
+        }
+       
+        @keyframes scroll-carousel {
+            0% {
+                transform: translateX(-10%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position:sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .dark-mode .nav-container {
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display:flex;
+            margin-right:10px;
+            justify-content:space-between;
+            align-items:center ;
+            max-width:1900px;
+            margin:0 auto;
+            padding:15px 20px;
+            position:relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .dark-mode .logo {
+            color: #f5f5f5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .dark-mode .nav-links a {
+            color: #f5f5f5;
+        }
+
+        .nav-links a:hover {
+            color: #b38b6d;
+            font-size: 18px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #b38b6d;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+
+        }
+
+        .menu-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 5px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            gap:30px;
+
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart {
+            background-color: #6F4E37;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #5a3c2c;
+        }
+
+        #cart {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 30px auto;
+        }
+
+        .dark-mode #cart {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #f5f5f5;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .dark-mode .cart-item {
+            border-bottom: 1px solid #555;
+        }
+
+        .remove-btn {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        #checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .dark-mode #theme-toggle {
+            color: #f5f5f5;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dark-mode .mobile-menu-btn {
+            color: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.8);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-mode .nav-links {
+                background-color: rgba(30, 30, 30, 0.8);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        footer {
+            background-color: rgba(48, 18, 18, 0.8);
+            color: #f5f5f5;
+            padding: 40px 20px;
+            text-align: center;
+
+        }
+
+        .dark-mode footer {
+            background-color: rgba(30, 30, 30, 0.8);
+        }
+
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: #e7da1b;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p,
+        .footer-section address {
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #333;
+            margin: 15px 0;
+        }
+
+        .dark-mode hr {
+            background: #f5f5f5;
+        }
+
+        /* Main Content */
+        .explore-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: url(' shop.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            opacity: 0.9;
+        }
+
+        .dark-mode .explore-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('bakery pic.jpg');
+            background-size: cover;
+        }
+
+        /* Magazine Layout */
+        .magazine-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            column-count: 1;
+            column-gap: 40px;
+            opacity: 0.8;
+        }
+
+        @media (min-width: 768px) {
+            .magazine-container {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .magazine-container {
+                column-count: 3;
+            }
+        }
+
+        /* Article Styles */
+        .magazine-article {
+            break-inside: avoid;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            opacity: 0.8;
+        }
+
+        .dark-mode .magazine-article {
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav>
+            <a href="COVER PAGE.html" class="logo" title="Cover Page">RIKA CAFETERIA</a>
+            <button class="mobile-menu-btn">☰</button>
+
+            <div class="nav-links">
+                <a href="MAIN PAGE.html" title="Main Page"><b>MAIN PAGE</b></a>
+                <a href="COFFEE MENU.html" title="Coffee Page"><b>COFFEE MENU</b></a>
+                <a href="BAKERY MENU.html" title="Bakery Page"><b>BAKERY MENU</b></a>
+                <a href="EXPLORE.html" tile="Explore"><b>EXPLORE</b></a>
+                <a href="ABOUT US.html" title="About Us"><b>ABOUT US</b></a>
+                <button id="theme-toggle" title="Toggle Dark Mode">🌓</button>
+            </div>
+        </nav>
+    </div>
+
+    <header class="explore-header">
+
+    </header>
+    <article class="magazine-article">
+        <h2>🍰 Spotlight: Bakes from the Heart</h2>
+        <p>Indulge in freshly baked pastries that melt in your mouth—each one tells a story of buttery layers and
+            artisan techniques. From flaky croissants to rich chocolate lava cakes, RIKA’s bakery is a sweet sanctuary.
+        </p>
+        <em>“The cinnamon swirl? Life-changing.” — Amelia B., regular since 2022</em>
+
+        <h2>🥗 Healthy Corner: Guilt-Free Goodness</h2>
+        <p>Who says café food can’t be clean and delicious? Dive into crisp garden salads, protein-packed bowls, and
+            wholesome sandwiches. We believe in balance—fresh, flavorful, and feel-good meals.</p>
+    </article>
+    <div class="carousel">
+        <div class="carousel-track">
+            <img src="Crossiant.jpg" alt="Croissant" title="$5.5 Croissant" />
+            <img src="Egg Tart.jpg" alt="Egg Tart" title="$3.0 Egg Tart" />
+            <img src="Butter Cake.jpg" alt="Butter Cake" title="$5.5 Butter Cake" />
+            <img src="Cheese Sandwich.jpg" alt="Sandwich" title="$5.5 Sandwich" />
+            <img src="sausage rolls.jpg" alt="Sausage Roll" title="$2 Sausage" />
+            <img src="Eclair.jpg" alt="Eclair" title="$4 Cream Eclair" />
+            <img src="Mochi.jpg" alt="Mochi" title="$3 Mochi" />
+            <img src="Tiramisu Cake.jpg" alt="Tiramisu" title="$3 Tiramisu Mousse Cake" />
+        </div>
+    </div>
+
+
+    <section class="magazine-container">
+        <article class="magazine-article">
+            <h2>🍞 Signature Bakes: Where Tradition Meets Taste</h2>
+            <p>Each morning at RIKA, the scent of fresh dough fills the air. Our signature sourdough loaf, baked golden
+                with a crispy crust and airy center, is perfect on its own or paired with our house-made spreads.</p>
+        </article>
+
+        <article class="magazine-article">
+            <h2>🥐 French Dreams: Croissants & Danishes</h2>
+            <p>Our croissants are flaky, buttery, and layered with precision. Choose from classic, chocolate, or almond.
+                The fruit-filled danishes burst with seasonal jams and melt-in-your-mouth textures.</p>
+        </article>
+
+        <article class="magazine-article">
+            <h2>🥧 Seasonal Picks: Limited-Time Love</h2>
+            <p>Every season brings something special. From pumpkin spice muffins in autumn to cherry blossom mochi in
+                spring, you’ll always find something new and exciting at RIKA’s bakery.</p>
+        </article>
+    </section>
+
+
+
+    <div class="menu-container">
+        <!-- Croissant -->
+        <div class="menu-item">
+            <img src="Crossiant.jpg" alt="Croissant" title="$5.5 Croissant" />
+            <h3>Croissant ($5.5)</h3>
+            <p>"Golden, flaky buttery pastries."</p>
+            <button class="add-to-cart" onclick="addToCart(1, 'Croissant', 5.5)">Add to Cart</button>
+        </div>
+
+        <!-- Egg Tart -->
+        <div class="menu-item">
+            <img src="Egg Tart.jpg" alt="Egg Tart" title="$3.0 Egg Tart" />
+            <h3>Egg Tart ($3.0)</h3>
+            <p>"Fluffy sweet cake made with fresh eggs."</p>
+            <button class="add-to-cart" onclick="addToCart(2, 'Egg Tart', 3.0)">Add to Cart</button>
+        </div>
+
+        <!-- Butter Cake -->
+        <div class="menu-item">
+            <img src="Butter Cake.jpg" alt="cake" title="$5.5 Butter Cake" />
+            <h3>Butter Cake ($5.5)</h3>
+            <p>"A rich, moist cake with a buttery flavor."</p>
+            <button class="add-to-cart" onclick="addToCart(3, 'Butter Cake', 5.5)">Add to Cart</button>
+        </div>
+
+        <!-- Sandwich Bread -->
+        <div class="menu-item">
+            <img src="Cheese Sandwich.jpg" alt="sandwich" title="$5.5 Sandwich" />
+            <h3>Sandwich Bread ($5.5)</h3>
+            <p>"Soft, fresh bread ideal for making sandwiches."</p>
+            <button class="add-to-cart" onclick="addToCart(4, 'Sandwich Bread', 5.5)">Add to Cart</button>
+        </div>
+
+        <!-- Mini Sausage Roll -->
+        <div class="menu-item">
+            <img src="sausage rolls.jpg" alt="Sausage" title="$2 Sausage" />
+            <h3>Mini Sausage Roll ($2.0)</h3>
+            <p>"Flaky pastry filled with savory sausage."</p>
+            <button class="add-to-cart" onclick="addToCart(5, 'Mini Sausage Roll', 2.0)">Add to Cart</button>
+        </div>
+
+        <!-- Vanilla Cream Eclair -->
+        <div class="menu-item">
+            <img src="Eclair.jpg" alt="Eclair" title="$4 Cream Eclair" />
+            <h3>Vanilla Cream Eclair ($4.0)</h3>
+            <p>"Light pastry filled with smooth vanilla cream."</p>
+            <button class="add-to-cart" onclick="addToCart(6, 'Vanilla Cream Eclair', 4.0)">Add to Cart</button>
+        </div>
+
+        <!-- Mochi -->
+        <div class="menu-item">
+            <img src="Mochi.jpg" alt="mochi" title="$3 mochi" />
+            <h3>Mochi ($3.0)</h3>
+            <p>"Soft, chewy, and slightly sweet."</p>
+            <button class="add-to-cart" onclick="addToCart(7, 'Mochi', 3.0)">Add to Cart</button>
+        </div>
+
+        <!-- Tiramisu Mousse Cake -->
+        <div class="menu-item">
+            <img src="Tiramisu Cake.jpg" alt="Tiramisu cake" title="$3 Tiramisu  Cake" />
+            <h3>Tiramisu Mousse Cake ($3.0)</h3>
+            <p>"Fluffy, creamy, and coffee-kissed perfection."</p>
+            <button class="add-to-cart" onclick="addToCart(8, 'Tiramisu  Cake', 3.0)">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div id="cart">
+        <h2>Your Cart (<span id="cart-count">0</span>)</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total" style="font-weight: bold; margin: 10px 0;"></div>
+        <button id="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>RIKA CAFERIA is dedicated to serving the finest coffee and pastries in a cozy, welcoming atmosphere.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <address>
+                    <p>📍 123 Sweet Street, Café Town</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>✉️ <a href="mailto:info@rikacaferia.com" style="color:white;">info@rikacaferia.com</a></p>
+                </address>
+            </div>
+
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Monday - Sunday</p>
+                <p>8:00 AM - 9:00 PM</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2023 RIKA CAFERIA. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Cart functionality
+        function addToCart(id, name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let existingItem = cart.find(item => item.id === id);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+
+            // Visual feedback
+            const btn = event.target;
+            btn.textContent = "✓ Added!";
+            setTimeout(() => { btn.textContent = "Add to Cart"; }, 1000);
+        }
+
+        function removeFromCart(id) {
+            let cart = JSON.parse(localStorage.getItem("cart")).filter(item => item.id !== id);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let count = cart.reduce((total, item) => total + item.quantity, 0);
+            let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            document.getElementById("cart-count").textContent = count;
+            document.getElementById("cart-total").textContent = `Total: $${total.toFixed(2)}`;
+
+            let itemsHtml = cart.map(item => `
+                <div class="cart-item">
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                    <button class="remove-btn" onclick="removeFromCart(${item.id})">×</button>
+                </div>
+            `).join("");
+
+            document.getElementById("cart-items").innerHTML = itemsHtml || "<p>Your cart is empty</p>";
+        }
+
+        // Checkout button
+        document.getElementById("checkout-btn").addEventListener("click", () => {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+            } else {
+                alert(`Order placed! Total: $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`);
+                localStorage.removeItem("cart");
+                updateCartDisplay();
+            }
+        });
+
+        // Initialize cart on page load
+        updateCartDisplay();
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.classList.add(savedTheme);
+                updateThemeToggle(savedTheme);
+            }
+
+            // Check system preference if no saved preference
+            if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                body.classList.add('dark-mode');
+                updateThemeToggle('dark-mode');
+            }
+
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+
+                // Save preference
+                const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+                localStorage.setItem('theme', currentTheme);
+                updateThemeToggle(currentTheme);
+            });
+
+            // Update theme toggle icon and text
+            function updateThemeToggle(theme) {
+                if (theme === 'dark-mode') {
+                    themeToggle.innerHTML = '☀️';
+                    themeToggle.title = 'Switch to Light Mode';
+                } else {
+                    themeToggle.innerHTML = '🌙';
+                    themeToggle.title = 'Switch to Dark Mode';
+                }
+            }
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        body.classList.add('dark-mode');
+                        updateThemeToggle('dark-mode');
+                    } else {
+                        body.classList.remove('dark-mode');
+                        updateThemeToggle('');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

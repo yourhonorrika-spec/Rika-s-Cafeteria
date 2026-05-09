@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RIKA CAFETERIA-COFFEE MENU</title>
+    <style>
+       
+        .dark-mode .menu-item {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+
+        a:link {
+            color: blue;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:visited {
+            color: rgb(7, 37, 119);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:link {
+            color: #b38b6d;
+            background-color: transparent;
+
+        }
+
+        a:visited {
+            color: rgb(7, 37, 119);
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        .dark-mode a:visited {
+            color: whitesmoke;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: purple;
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: rgb(6, 253, 39);
+            background-color: transparent;
+            text-decoration: underline;
+        }
+
+        
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 5px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            gap:30px;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart {
+            background-color: #6F4E37;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #5a3c2c;
+        }
+
+        #cart {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 30px auto;
+        }
+
+        .dark-mode #cart {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #f5f5f5;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .dark-mode .cart-item {
+            border-bottom: 1px solid #555;
+        }
+
+        .remove-btn {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 3px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        #checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+       body {
+            font-family: monospace;
+            font-size: 12px;
+            letter-spacing: 3px;
+            word-spacing: 1px;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #3d3333;
+            text-align: center;
+            background-image: url(minimal-wp.jpg);
+
+        }
+
+        .dark-mode {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: #f5f5f5;
+            background-image: url(dark-wood.png);
+        }
+
+        .carousel {
+            max-width:auto;
+            min-width:auto;
+            width: max-content;
+            height: 400px;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            margin: 20px auto;
+            margin-left: 10px;
+            margin-right: 10px;
+            display:flex;
+            animation:scroll-carousel 15s linear infinite;
+        }
+
+        .carousel:hover  {
+            animation-play-state: paused;
+        }
+
+        .carousel img {
+            width: 300px;
+            height: 350px;
+            object-fit:inherit;
+            border-radius:20px;
+            cursor: pointer;
+        }
+       
+        @keyframes scroll-carousel {
+            0% {
+                transform: translateX(-10%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .nav-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position:sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .dark-mode .nav-container {
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display:flex;
+            margin-right:10px;
+            justify-content:space-between;
+            align-items:center ;
+            max-width:1900px;
+            margin:0 auto;
+            padding:15px 20px;
+            position:relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .dark-mode .logo {
+            color: #f5f5f5;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .dark-mode .nav-links a {
+            color: #f5f5f5;
+        }
+
+        .nav-links a:hover {
+            color: #b38b6d;
+            font-size: 18px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #b38b6d;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            color: #333;
+            transition: transform 0.3s;
+        }
+
+        .dark-mode #theme-toggle {
+            color: #f5f5f5;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .dark-mode .mobile-menu-btn {
+            color: #f5f5f5;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .dark-mode .nav-links {
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        footer {
+            background-color: rgba(48, 18, 18, 0.8);
+            color: #f5f5f5;
+            padding: 40px 20px;
+            text-align: center;
+
+        }
+
+        .dark-mode footer {
+            background-color: rgba(30, 30, 30, 0.8);
+        }
+
+
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: #e7da1b;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p,
+        .footer-section address {
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #333;
+            margin: 15px 0;
+        }
+
+        .dark-mode hr {
+            background: #f5f5f5;
+        }
+
+        /* Main Content */
+        .explore-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: url('tulip.jpg');
+            opacity: 0.9;
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+        }
+
+        .dark-mode .explore-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('coffee pic.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        /* Magazine Layout */
+        .magazine-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            column-count: 1;
+            column-gap: 40px;
+            opacity: 0.8;           
+        }
+
+        @media (min-width: 768px) {
+            .magazine-container {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .magazine-container {
+                column-count: 3;
+            }
+        }
+
+        /* Article Styles */
+        .magazine-article {
+            break-inside: avoid;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            opacity: 0.8;
+
+        }
+
+        .dark-mode .magazine-article {
+            background-color: rgba(30, 30, 30, 0.8);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav>
+            <a href="COVER PAGE.html" class="logo" title="Cover Page">RIKA CAFETERIA</a>
+
+            <button class="mobile-menu-btn">☰</button>
+
+            <div class="nav-links">
+                <a href="MAIN PAGE.html" link title="Main Page"><b>MAIN PAGE</b></a>
+                <a href="COFFEE MENU.html" link title="Coffee Page"><b>COFFEE MENU</b>
+                    <a href="BAKERY MENU.html" link title="Bakery Page"><b>BAKERY MENU </b></a>
+                    <a href="EXPLORE.html" title="Explore"><b>EXPLORE</b></a>
+                    <a href="ABOUT US.html" title="About Us"><b>ABOUT US</b></a>
+                    <a id="theme-toggle" title="Toggle Dark Logo"><b>🌓</b></a>
+
+            </div>
+        </nav>
+    </div>
+
+    <header class="explore-header"></header>
+
+    <article class="magazine-article">
+        <h2>🥶 Cold Brews & Iced Picks</h2>
+        <p>Chill out with our slow-steeped cold brew—strong, smooth, and never bitter. Try it black, with cream, or with
+            a hint of vanilla and brown sugar syrup for a refreshing twist.</p>
+
+        <h2>🫖 Beyond Coffee: Teas & Wellness Blends</h2>
+        <p>More than just coffee, RIKA offers a curated selection of organic teas—think floral chamomile, spiced chai,
+            and antioxidant-rich matcha. Served hot or iced, they’re steeped with care.</p>
+    </article>
+
+    </section>
+
+    <div class="carousel">
+        <div class="carousel-track">
+            <img src="Cappuccino.jpg" alt="Cappuccino">
+            <img src="Espresso.jpg" alt="Espresso">
+            <img src="Latte.jpg" alt="Latte">
+            <img src="Iced Americo.jpg" alt="Iced Americano">
+            <img src="Mocha.jpg" alt="Mocha">
+            <img src="Matcha.jpg" alt="Matcha">
+            <img src="Choco.jpg" alt="Hot Chocolate">
+            <img src="Milk Tea.jpg" alt="Milk Tea">
+        </div>
+    </div>
+    <section class="magazine-container">
+        <article class="magazine-article">
+            <h2>☕ Featured Article: <em>The Art of Coffee at RIKA CAFETERIA</em></h2>
+            <p><strong>By Rika’s Brew Team</strong></p>
+            <p>Step into the aromatic world of RIKA CAFETERIA, where each cup is a handcrafted masterpiece. Our beans
+                are ethically sourced, roasted to perfection, and brewed with care to deliver bold, balanced flavors.
+                Whether it's a frothy cappuccino or a smooth cold brew, your perfect sip awaits.</p>
+
+        </article>
+
+
+        <article class="magazine-article">
+
+
+            <h2>💡 Cafe Vibes: More Than Just a Place</h2>
+            <p>With cozy lighting, ambient jazz, and warm wood accents, RIKA CAFETERIA isn’t just about food—it’s an
+                experience. Ideal for freelancers, date nights, or that solo moment with a good book.</p>
+
+            <p>Our original espresso machine still works behind the counter today, now serving as a lucky charm for our
+                baristas.</p>
+        </article>
+
+        <article class="magazine-article">
+            <h2>🍵 Tea Time: A Sip of Serenity</h2>
+            <p>Discover the calming world of our teas—from classic Earl Grey to our house-crafted herbal blends. Each
+                cup is steeped with love and wellness in mind.</p>
+
+            <h2>✨ Barista’s Pick of the Month</h2>
+            <p><strong>Try the ‘Caramel Hazelnut Mocha’</strong> — a dreamy mix of espresso, silky steamed milk,
+                hazelnut, and a swirl of caramel. Finished with whipped cream and a sprinkle of cocoa dust.</p>
+
+        </article>
+    </section>
+
+
+    <div class="menu-container">
+        <!-- Cappuccino -->
+        <div class="menu-item">
+            <img src="Cappuccino.jpg" alt="Cappuccino">
+            <h3>Cappuccino ($6.0)</h3>
+            <p>"Smooth espresso with steamed milk and a creamy foam."</p>
+            <button class="add-to-cart" onclick="addToCart(1, 'Cappuccino', 6.0)">Add to Cart</button>
+        </div>
+
+        <!-- Espresso -->
+        <div class="menu-item">
+            <img src="Espresso.jpg" alt="Espresso">
+            <h3>Espresso ($5.5)</h3>
+            <p>"Strong and concentrated coffee served in small shots."</p>
+            <button class="add-to-cart" onclick="addToCart(2, 'Espresso', 5.5)">Add to Cart</button>
+        </div>
+
+        <!-- Iced Americano -->
+        <div class="menu-item">
+            <img src="Iced Americo.jpg" alt="Iced Americano">
+            <h3>Iced Americano ($6.0)</h3>
+            <p>"Espresso served over ice with a splash of water."</p>
+            <button class="add-to-cart" onclick="addToCart(3, 'Iced Americano', 6.0)">Add to Cart</button>
+        </div>
+
+        <!-- Café Latte -->
+        <div class="menu-item">
+            <img src="Latte.jpg" alt="Café Latte">
+            <h3>Café Latte ($5.5)</h3>
+            <p>"Espresso blended with chilled milk and ice."</p>
+            <button class="add-to-cart" onclick="addToCart(4, 'Café Latte', 5.5)">Add to Cart</button>
+        </div>
+
+        <!-- Hot Café Mocha -->
+        <div class="menu-item">
+            <img src="Mocha.jpg" alt="Hot Café Mocha">
+            <h3>Hot Café Mocha ($6.0)</h3>
+            <p>"Espresso, chocolate syrup, steamed milk, topped with whipped cream."</p>
+            <button class="add-to-cart" onclick="addToCart(5, 'Hot Café Mocha', 6.0)">Add to Cart</button>
+        </div>
+
+        <!-- Matcha Latte -->
+        <div class="menu-item">
+            <img src="Matcha.jpg" alt="Matcha Latte">
+            <h3>Matcha ($5.5)</h3>
+            <p>"Pure matcha whisked with hot water, smooth and creamy foam."</p>
+            <button class="add-to-cart" onclick="addToCart(6, 'Matcha Latte', 5.5)">Add to Cart</button>
+        </div>
+
+        <!-- Iced Chocolate -->
+        <div class="menu-item">
+            <img src="Choco.jpg" alt="Iced Chocolate">
+            <h3>Iced Chocolate ($7.0)</h3>
+            <p>"A refreshing cold chocolate drink, smooth and creamy."</p>
+            <button class="add-to-cart" onclick="addToCart(7, 'Iced Chocolate', 7.0)">Add to Cart</button>
+        </div>
+
+        <!-- Custom Milktea -->
+        <div class="menu-item">
+            <img src="Milk Tea.jpg" alt="Milk Tea">
+            <h3>Milk Tea($4.5)</h3>
+            <p>"Thick, creamy, and tasty bobba"</p>
+            <button class="add-to-cart" onclick="addToCart(8, 'Milk Tea', 4.5)">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div id="cart">
+        <h2>Your Cart (<span id="cart-count">0</span>)</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total" style="font-weight: bold; margin: 10px 0;"></div>
+        <button id="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>RIKA CAFERIA is dedicated to serving the finest coffee and pastries in a cozy, welcoming atmosphere.
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <address>
+                    <p>📍 123 Sweet Street, Café Town</p>
+                    <p>📞 +1 (555) 123-4567</p>
+                    <p>✉️ <a href="mailto:info@rikacaferia.com" style="color:white;">info@rikacaferia.com</a></p>
+                </address>
+            </div>
+
+            <div class="footer-section">
+                <h3>Hours</h3>
+                <p>Monday - Sunday</p>
+                <p>8:00 AM - 9:00 PM</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>© 2023 RIKA CAFERIA. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Cart functionality
+        function addToCart(id, name, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let existingItem = cart.find(item => item.id === id);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+
+            // Visual feedback
+            const btn = event.target;
+            btn.textContent = "✓ Added!";
+            setTimeout(() => { btn.textContent = "Add to Cart"; }, 1000);
+        }
+
+        function removeFromCart(id) {
+            let cart = JSON.parse(localStorage.getItem("cart")).filter(item => item.id !== id);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let count = cart.reduce((total, item) => total + item.quantity, 0);
+            let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            document.getElementById("cart-count").textContent = count;
+            document.getElementById("cart-total").textContent = `Total: $${total.toFixed(2)}`;
+
+            let itemsHtml = cart.map(item => `
+                <div class="cart-item">
+                    <span>${item.name} x${item.quantity}</span>
+                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                    <button class="remove-btn" onclick="removeFromCart(${item.id})">×</button>
+                </div>
+            `).join("");
+
+            document.getElementById("cart-items").innerHTML = itemsHtml || "<p>Your cart is empty</p>";
+        }
+
+        // Checkout button
+        document.getElementById("checkout-btn").addEventListener("click", () => {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+            } else {
+                alert(`Order placed! Total: $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`);
+                localStorage.removeItem("cart");
+                updateCartDisplay();
+            }
+        });
+
+        // Initialize cart on page load
+        updateCartDisplay();
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.classList.add(savedTheme);
+                updateThemeToggle(savedTheme);
+            }
+
+            // Check system preference if no saved preference
+            if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                body.classList.add('dark-mode');
+                updateThemeToggle('dark-mode');
+            }
+
+            // Toggle theme on button click
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+
+                // Save preference
+                const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
+                localStorage.setItem('theme', currentTheme);
+                updateThemeToggle(currentTheme);
+            });
+
+            // Update theme toggle icon and text
+            function updateThemeToggle(theme) {
+                if (theme === 'dark-mode') {
+                    themeToggle.innerHTML = '☀️';
+                    themeToggle.title = 'Switch to Light Mode';
+                } else {
+                    themeToggle.innerHTML = '🌙';
+                    themeToggle.title = 'Switch to Dark Mode';
+                }
+            }
+
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    if (e.matches) {
+                        body.classList.add('dark-mode');
+                        updateThemeToggle('dark-mode');
+                    } else {
+                        body.classList.remove('dark-mode');
+                        updateThemeToggle('');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
