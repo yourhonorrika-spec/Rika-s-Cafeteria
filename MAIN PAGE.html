@@ -3,9 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" margin="0" padding="0">
-    <title>CAFE's MAIN PAGE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, margin=0, padding=0">
+    <title>CAFE'S MAIN PAGE</title>
     <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -19,7 +23,6 @@
         .dark-mode a:link {
             color: #b38b6d;
             background-color: transparent;
-
         }
 
         a:visited {
@@ -46,7 +49,7 @@
             text-decoration: underline;
         }
 
-         body {
+        body {
             font-family: monospace;
             font-size: 12px;
             letter-spacing: 3px;
@@ -57,7 +60,8 @@
             color: #3d3333;
             text-align: center;
             background-image: url(minimal-wp.jpg);
-
+            overflow-x: hidden;
+            width: 100%;
         }
 
         .dark-mode {
@@ -66,38 +70,39 @@
             background-image: url(dark-wood.png);
         }
 
+        .carousel-outer {
+            width: 100%;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
         .carousel {
-            max-width:auto;
-            min-width:auto;
             width: max-content;
             height: 400px;
             box-sizing: border-box;
-            overflow: hidden;
             position: relative;
-            margin: 20px auto;
-            margin-left: 10px;
-            margin-right: 10px;
-            display:flex;
-            animation:scroll-carousel 15s linear infinite;
+            margin: 0 auto;
+            display: flex;
+            animation: scroll-carousel 15s linear infinite;
         }
 
-        .carousel:hover  {
+        .carousel:hover {
             animation-play-state: paused;
         }
 
         .carousel img {
             width: 300px;
             height: 350px;
-            object-fit:inherit;
-            border-radius:20px;
+            object-fit: cover;
+            border-radius: 20px;
             cursor: pointer;
+            margin: 0 10px;
         }
        
         @keyframes scroll-carousel {
             0% {
-                transform: translateX(-10%);
+                transform: translateX(0%);
             }
-
             100% {
                 transform: translateX(-50%);
             }
@@ -106,9 +111,10 @@
         .nav-container {
             background-color: rgba(255, 255, 255, 0.8);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position:sticky;
+            position: sticky;
             top: 0;
-            z-index: 1;
+            z-index: 100;
+            width: 100%;
         }
 
         .dark-mode .nav-container {
@@ -117,14 +123,14 @@
         }
 
         nav {
-            display:flex;
-            margin-right:10px;
-            justify-content:space-between;
-            align-items:center ;
-            max-width:1900px;
-            margin:0 auto;
-            padding:15px 20px;
-            position:relative;
+            display: flex;
+            margin-right: 10px;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1900px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            position: relative;
         }
 
         .logo {
@@ -180,7 +186,6 @@
             width: 100%;
         }
 
-        /* Theme Toggle Button */
         #theme-toggle {
             background: none;
             border: none;
@@ -199,7 +204,6 @@
             transform: scale(1.1);
         }
 
-        /* Mobile Menu Toggle */
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -244,14 +248,12 @@
             color: #f5f5f5;
             padding: 40px 20px;
             text-align: center;
-
+            width: 100%;
         }
 
         .dark-mode footer {
             background-color: rgba(30, 30, 30, 0.8);
         }
-
-
 
         .footer-content {
             max-width: 1200px;
@@ -292,44 +294,50 @@
  
         .menu-section {
             background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 40px;
             border-radius: 40px;
-            border-bottom: 40px;
-            margin-left: 10px;
+            padding: 30px;
+            margin: 0 auto 40px auto;
             border: 1px solid black;
-            width: 100% max-content;
-
+            width: 90%;
+            max-width: 1200px;
         }
 
         .dark-mode .menu-section {
             background-color: #333;
             color: #f5f5f5;
         }
-    /* */
+
         .menu-item {
             margin-bottom: 15px;
             padding: 15px 15px;
             border-bottom: 1px dashed #ccc;
             font-size: large;
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transform-style: preserve-3d;
+            position: relative;
+        }
 
+        .menu-item:hover {
+            transform: rotateY(15deg) translateY(-10px);
+            box-shadow: 20px 20px 20px rgba(119, 92, 33, 0.3);
+            z-index: 10;
         }
 
         .menu-item:last-child {
             border-bottom: none;
         }
+
         .dark-mode .menu-item {
             background-color: #333;
             color: #f5f5f5;
-
         }
+
         .item-name {
             font-weight: bold;
             color: #aa6c3c;
             font-size: 1.1em;
             float: left;
-            max-width: 230px;
+            max-width: 400px;
         }
 
         .item-price {
@@ -342,17 +350,17 @@
             color: #632323;
             margin-top: 5px;
             max-width: 1550px;
-            align-items: center;
+            text-align: left;
+            clear: both;
         }
 
         .dark-mode .item-desc {
             color: #f5f5f5;
-
         }
 
-        /* 3D Cover Section */
         .cover-container {
             height: 100vh;
+            width: 100%;
             perspective: 1000px;
             position: relative;
             overflow: hidden;
@@ -369,7 +377,6 @@
             transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
         }
 
-        /* Slide 1: Coffee Cup */
         .slide-1 {
             background: url('cup cover.jpg');
             background-size: cover;
@@ -377,7 +384,6 @@
             z-index: 3;
         }
 
-        /* Slide 2: Bakery */
         .slide-2 {
             background: url('dark-wood.png');
             background-size: cover;
@@ -385,14 +391,12 @@
             z-index: 2;
         }
 
-        /* Slide 3: Cafe Ambience */
         .slide-3 {
             background: url('setting-scene.jpg');
             background-size: cover;
             transform: rotateX(90deg) translateZ(100vh);
             z-index: 1;
         }
-
 
         h1 {
             font-size: 4rem;
@@ -409,23 +413,15 @@
         .btn {
             display: inline-block;
             padding: 1rem 2rem;
-            background: var(--accent);
-            color: var(--dark);
+            color: #333;
             text-decoration: none;
             font-weight: bold;
             border-radius: 50px;
             transition: all 0.3s ease;
             border: 2px solid transparent;
+            animation: pulse 2s infinite;
         }
 
-        .btn:hover {
-            background: transparent;
-            color: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        /* Navigation Dots */
         .cover-nav {
             position: absolute;
             bottom: 2rem;
@@ -446,134 +442,45 @@
         }
 
         .nav-dot.active {
-            background: var(--accent);
+            background: #b38b6d;
             transform: scale(1.3);
         }
 
-        /* Designer & Developer Badge */
-        .credits {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: white;
-            z-index: 10;
-        }
-
-        /* Content Section */
-        .main-content {
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .tagline {
-                font-size: 1.2rem;
-            }
-        }
-
-        /* ===== 3D & INTERACTIVE ELEMENTS ===== */
-        /* 1. 3D Hover Effects for Menu Items */
-        .menu-item {
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            transform-style: preserve-3d;
-            position: relative;
-        }
-
-        .menu-item:hover {
-            transform: rotateY(15deg) translateY(-10px);
-            box-shadow: 20px 20px 20px rgba(119, 92, 33, 0.3);
-            z-index: 10;
-            padding: 15px 15px;
-        }
-
-        .dark-mode .menu-item {
-            transition: all 0.5s ease, color 0.3s ease;
-        }
-
         p {
-            text-shadow: #f8f4f4;
             color: #ffffff;
         }
-
-        /* 2. Coffee Bean Cursor */
-        body {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%236F4E37" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path fill="%23E3B04B" d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>'), auto;
-        }
-
-
-
-        /* 4. 3D Carousel for Events */
-        .events-carousel {
-            perspective: 1000px;
-        }
-
-        .sq-box {
-            transition: transform 0.5s;
-            transform-style: preserve-3d;
-        }
-
-        .sq-box:hover {
-            transform: rotateY(15deg) scale(1.03);
-        }
-
 
         .dark-mode p {
             color: #ffffff;
         }
 
-
-        /* Pulse animation for CTAs */
-        .btn {
-            animation: pulse 2s infinite;
-        }
-
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
-<div class="nav-container">
-    <nav>
-        <a href="index.html" class="logo" title="Cover Page">RIKA CAFETERIA</a>
-        <button class="mobile-menu-btn">☰</button>
-        <div class="nav-links">
-            <a href="MAIN-PAGE.html" link title="Main Page"><b>MAIN PAGE</b></a>
-            <a href="COFFEE-MENU.html" link title="Coffee Page"><b>COFFEE MENU</b>
-                <a href="BAKERY-MENU.html" link title="Bakery Page"><b>BAKERY MENU </b></a>
-                <a href="EXPLORE.html" title="Explore"><b>EXPLORE</b></a>
-                <a href="ABOUT-US.html" title="About Us"><b>ABOUT US</b></a>
-                <a id="theme-toggle" title="Toggle Dark Mode"><b>🌓</b></a>
-
-        </div>
-    </nav>
-</div>
-
-</head>
 
 <body>
+
+    <div class="nav-container">
+        <nav>
+            <a href="COVER PAGE.html" class="logo" title="Cover Page">RIKA CAFETERIA</a>
+            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-links">
+                <a href="MAIN PAGE.html" title="Main Page"><b>MAIN PAGE</b></a>
+                <a href="COFFEE MENU.html" title="Coffee Page"><b>COFFEE MENU</b></a>
+                <a href="BAKERY MENU.html" title="Bakery Page"><b>BAKERY MENU </b></a>
+                <a href="EXPLORE.html" title="Explore"><b>EXPLORE</b></a>
+                <a href="ABOUT US.html" title="About Us"><b>ABOUT US</b></a>
+                <button id="theme-toggle" title="Toggle Dark Mode"><b>🌓</b></button>
+            </div>
+        </nav>
+    </div>
+
     <!-- 3D Cover Section -->
     <div class="cover-container">
-        <!-- Slide 1: Main Cover -->
         <div class="cover-slide slide-1 active-slide">
             <div class="cover-content">
                 <h1>RIKA CAFETERIA</h1>
@@ -581,7 +488,6 @@
             </div>
         </div>
 
-        <!-- Slide 2: Bakery -->
         <div class="cover-slide slide-2">
             <div class="cover-content">
                 <h1>Artisan Bakery</h1>
@@ -589,54 +495,48 @@
             </div>
         </div>
 
-        <!-- Slide 3: Ambience -->
         <div class="cover-slide slide-3">
             <div class="cover-content">
                 <h1>Cozy Atmosphere</h1>
             </div>
         </div>
 
-        <!-- Navigation Dots -->
         <div class="cover-nav">
             <div class="nav-dot active" data-slide="1"></div>
             <div class="nav-dot" data-slide="2"></div>
             <div class="nav-dot" data-slide="3"></div>
         </div>
-
-
     </div>
 
     <hr>
-    <title>COFFEE MENU</title>
     <h1 style="align-items: center;">Coffee Menu</h1>
     <h4><b>
             <a href="COFFEE MENU.html" link title="COFFEE MENU" alt="COFFEE MENU" target="_blank">
-                Here are yourdelicious coffee items to offer!</b>
+                Here are your delicious coffee items to offer!</b>
     </h4>
     <a href="#explore"><b>EXPLORE</b></a>
     <hr>
+    
+    <div class="carousel-outer">
         <div class="carousel">
-                <a href="COFFEE MENU.html"> <img src="Cappuccino.jpg" alt="Cappuccino" title="$6.0 Cappuccino"></a>
-                <a href="COFFEE MENU.html"> <img src="Espresso.jpg" alt="Espresso" title="$5.5 Espresso"></a>
-                <a href="COFFEE MENU.html"> <img src="Latte.jpg" alt="Latte" title="$5.5"></a>
-                <a href="COFFEE MENU.html"> <img src="Iced Americo.jpg" alt="Iced Americano"
-                        title="$6.0 Iced Americano"></a>
-                <a href="COFFEE MENU.html"> <img src="Mocha.jpg" alt="Mocha" title="$6.0  Hot Mocha"></a>
-                <a href="COFFEE MENU.html"> <img src="Matcha.jpg" alt="Matcha" title="$5.5 Matcha"></a>
-                <a href="COFFEE MENU.html"> <img src="Choco.jpg" alt="Hot Chocolate" title="$7.0 Hot Chocolate"></a>
-                <a href="COFFEE MENU.html"> <img src="Milk Tea.jpg" alt="Milk Tea" title="$4.5 Milk Tea"></a>
-                <a href="COFFEE MENU.html"> <img src="Cappuccino.jpg" alt="Cappuccino" title="$6.0 Cappuccino"></a>
-                <a href="COFFEE MENU.html"> <img src="Espresso.jpg" alt="Espresso" title="$5.5 Espresso"></a>
-                <a href="COFFEE MENU.html"> <img src="Latte.jpg" alt="Latte" title="$5.5"></a>
-                <a href="COFFEE MENU.html"> <img src="Iced Americo.jpg" alt="Iced Americano"
-                        title="$6.0 Iced Americano"></a>
-                <a href="COFFEE MENU.html"> <img src="Mocha.jpg" alt="Mocha" title="$6.0  Hot Mocha"></a>
-                <a href="COFFEE MENU.html"> <img src="Matcha.jpg" alt="Matcha" title="$5.5 Matcha"></a>
-                <a href="COFFEE MENU.html"> <img src="Choco.jpg" alt="Hot Chocolate" title="$7.0 Hot Chocolate"></a>
-                <a href="COFFEE MENU.html"> <img src="Milk Tea.jpg" alt="Milk Tea" title="$4.5 Milk Tea"></a>
-            
+            <a href="COFFEE MENU.html"> <img src="Cappuccino.jpg" alt="Cappuccino" title="$6.0 Cappuccino"></a>
+            <a href="COFFEE MENU.html"> <img src="Espresso.jpg" alt="Espresso" title="$5.5 Espresso"></a>
+            <a href="COFFEE MENU.html"> <img src="Latte.jpg" alt="Latte" title="$5.5"></a>
+            <a href="COFFEE MENU.html"> <img src="Iced Americo.jpg" alt="Iced Americano" title="$6.0 Iced Americano"></a>
+            <a href="COFFEE MENU.html"> <img src="Mocha.jpg" alt="Mocha" title="$6.0  Hot Mocha"></a>
+            <a href="COFFEE MENU.html"> <img src="Matcha.jpg" alt="Matcha" title="$5.5 Matcha"></a>
+            <a href="COFFEE MENU.html"> <img src="Choco.jpg" alt="Hot Chocolate" title="$7.0 Hot Chocolate"></a>
+            <a href="COFFEE MENU.html"> <img src="Milk Tea.jpg" alt="Milk Tea" title="$4.5 Milk Tea"></a>
+            <a href="COFFEE MENU.html"> <img src="Cappuccino.jpg" alt="Cappuccino" title="$6.0 Cappuccino"></a>
+            <a href="COFFEE MENU.html"> <img src="Espresso.jpg" alt="Espresso" title="$5.5 Espresso"></a>
+            <a href="COFFEE MENU.html"> <img src="Latte.jpg" alt="Latte" title="$5.5"></a>
+            <a href="COFFEE MENU.html"> <img src="Iced Americo.jpg" alt="Iced Americano" title="$6.0 Iced Americano"></a>
+            <a href="COFFEE MENU.html"> <img src="Mocha.jpg" alt="Mocha" title="$6.0  Hot Mocha"></a>
+            <a href="COFFEE MENU.html"> <img src="Matcha.jpg" alt="Matcha" title="$5.5 Matcha"></a>
+            <a href="COFFEE MENU.html"> <img src="Choco.jpg" alt="Hot Chocolate" title="$7.0 Hot Chocolate"></a>
+            <a href="COFFEE MENU.html"> <img src="Milk Tea.jpg" alt="Milk Tea" title="$4.5 Milk Tea"></a>
         </div>
-
+    </div>
 
     <hr>
 
@@ -648,30 +548,31 @@
     <p><a href="#explorebakery"><b>EXPLORE</b></a></p>
     <br>
     <hr>
+    
+    <div class="carousel-outer">
         <div class="carousel">
-                <a href="BAKERY MENU.html"> <img src="Crossiant.jpg" alt="Croissant" title="$5.5 Croissant" /></a>
-                <a href="BAKERY MENU.html"> <img src="Egg Tart.jpg" alt="Egg Tart" title="$3.0 Egg Tart" /></a>
-                <a href="BAKERY MENU.html"> <img src="Butter Cake.jpg" alt="Butter Cake" title="$5.5 Butter Cake" /></a>
-                <a href="BAKERY MENU.html"> <img src="Cheese Sandwich.jpg" alt="Sandwich" title="$5.5 Sandwich" /></a>
-                <a href="BAKERY MENU.html"> <img src="sausage rolls.jpg" alt="Sausage Roll" title="$2 Sausage" /></a>
-                <a href="BAKERY MENU.html"> <img src="Eclair.jpg" alt="Eclair" title="$4 Cream Eclair" /></a>
-                <a href="BAKERY MENU.html"> <img src="Mochi.jpg" alt="Mochi" title="$3 Mochi" /></a>
-                <a href="BAKERY MENU.html"> <img src="Tiramisu Cake.jpg" alt="Tiramisu" title="$3 Tiramisu Cake" /></a>
-                <a href="BAKERY MENU.html"> <img src="Crossiant.jpg" alt="Croissant" title="$5.5 Croissant" /></a>
-                <a href="BAKERY MENU.html"> <img src="Egg Tart.jpg" alt="Egg Tart" title="$3.0 Egg Tart" /></a>
-                <a href="BAKERY MENU.html"> <img src="Butter Cake.jpg" alt="Butter Cake" title="$5.5 Butter Cake" /></a>
-                <a href="BAKERY MENU.html"> <img src="Cheese Sandwich.jpg" alt="Sandwich" title="$5.5 Sandwich" /></a>
-                <a href="BAKERY MENU.html"> <img src="sausage rolls.jpg" alt="Sausage Roll" title="$2 Sausage" /></a>
-                <a href="BAKERY MENU.html"> <img src="Eclair.jpg" alt="Eclair" title="$4 Cream Eclair" /></a>
-                <a href="BAKERY MENU.html"> <img src="Mochi.jpg" alt="Mochi" title="$3 Mochi" /></a>
-                <a href="BAKERY MENU.html"> <img src="Tiramisu Cake.jpg" alt="Tiramisu" title="$3 Tiramisu Cake" /></a>
+            <a href="BAKERY MENU.html"> <img src="Crossiant.jpg" alt="Croissant" title="$5.5 Croissant" /></a>
+            <a href="BAKERY MENU.html"> <img src="Egg Tart.jpg" alt="Egg Tart" title="$3.0 Egg Tart" /></a>
+            <a href="BAKERY MENU.html"> <img src="Butter Cake.jpg" alt="Butter Cake" title="$5.5 Butter Cake" /></a>
+            <a href="BAKERY MENU.html"> <img src="Cheese Sandwich.jpg" alt="Sandwich" title="$5.5 Sandwich" /></a>
+            <a href="BAKERY MENU.html"> <img src="sausage rolls.jpg" alt="Sausage Roll" title="$2 Sausage" /></a>
+            <a href="BAKERY MENU.html"> <img src="Eclair.jpg" alt="Eclair" title="$4 Cream Eclair" /></a>
+            <a href="BAKERY MENU.html"> <img src="Mochi.jpg" alt="Mochi" title="$3 Mochi" /></a>
+            <a href="BAKERY MENU.html"> <img src="Tiramisu Cake.jpg" alt="Tiramisu" title="$3 Tiramisu Cake" /></a>
+            <a href="BAKERY MENU.html"> <img src="Crossiant.jpg" alt="Croissant" title="$5.5 Croissant" /></a>
+            <a href="BAKERY MENU.html"> <img src="Egg Tart.jpg" alt="Egg Tart" title="$3.0 Egg Tart" /></a>
+            <a href="BAKERY MENU.html"> <img src="Butter Cake.jpg" alt="Butter Cake" title="$5.5 Butter Cake" /></a>
+            <a href="BAKERY MENU.html"> <img src="Cheese Sandwich.jpg" alt="Sandwich" title="$5.5 Sandwich" /></a>
+            <a href="BAKERY MENU.html"> <img src="sausage rolls.jpg" alt="Sausage Roll" title="$2 Sausage" /></a>
+            <a href="BAKERY MENU.html"> <img src="Eclair.jpg" alt="Eclair" title="$4 Cream Eclair" /></a>
+            <a href="BAKERY MENU.html"> <img src="Mochi.jpg" alt="Mochi" title="$3 Mochi" /></a>
+            <a href="BAKERY MENU.html"> <img src="Tiramisu Cake.jpg" alt="Tiramisu" title="$3 Tiramisu Cake" /></a>
         </div>
+    </div>
     
     <hr>
-    <title>EXPLORE</title>
 
     <h1 id="explore">COFFEE MENU</h1>
-
     <h2 style="text-align: center;">Explore Our Menu</h2>
 
     <div class="menu-section">
@@ -723,9 +624,9 @@
             <p class="item-desc">Thick, creamy, and tasty bobba</p>
         </div>
     </div>
-    <div >
-        <img src="cp2.jpg" width="680px" height="400px" />
-        <img src="ck2.jpg" width="650px" height="400px" />
+    <div style="text-align: center; margin: 20px 0;">
+        <img src="cp2.jpg" width="680px" height="400px" style="max-width:100%; height:auto;" />
+        <img src="ck2.jpg" width="650px" height="400px" style="max-width:100%; height:auto;" />
     </div>
 
     <h1 id="explorebakery">BAKERY ITEMS</h1>
@@ -775,20 +676,17 @@
             <p class="item-desc">Soft, chewy, and slightly sweet.</p>
         </div>
         <div class="menu-item">
-            <span class="item-name">Vanilla Cream Eclair</span>
-            <span class="item-price">$4</span>
-            <p class="item-desc">Light pastry filled with smooth vanilla cream.</p>
+            <span class="item-name">Tiramisu cake</span>
+            <span class="item-price">$3</span>
+            <p class="item-desc">Fluffy, creamy, and coffee-kissed perfection.</p>
         </div>
-
     </div>
-    </section>
 
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>About Us</h3>
-                <p>RIKA CAFERIA is dedicated to serving the finest coffee and pastries in a cozy, welcoming atmosphere.
-                </p>
+                <p>RIKA CAFERIA is dedicated to serving the finest coffee and pastries in a cozy, welcoming atmosphere.</p>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
@@ -810,14 +708,13 @@
             <p>© 2023 RIKA CAFERIA. All rights reserved.</p>
         </div>
     </footer>
+
     <script>
-        // 3D Cover Transitions
         document.addEventListener('DOMContentLoaded', () => {
             const slides = document.querySelectorAll('.cover-slide');
             const dots = document.querySelectorAll('.nav-dot');
             let currentSlide = 0;
 
-            // Auto-rotate slides
             function rotateSlides() {
                 slides.forEach((slide, index) => {
                     if (index === currentSlide) {
@@ -839,22 +736,18 @@
                 currentSlide = (currentSlide + 1) % slides.length;
             }
 
-            // Set initial state
             rotateSlides();
+            let slideInterval = setInterval(rotateSlides, 5000);
 
-            // Auto-rotate every 5 seconds
-            const slideInterval = setInterval(rotateSlides, 5000);
-
-            // Manual navigation with dots
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     clearInterval(slideInterval);
                     currentSlide = index;
                     rotateSlides();
+                    slideInterval = setInterval(rotateSlides, 5000);
                 });
             });
 
-            // Pause on hover
             const coverContainer = document.querySelector('.cover-container');
             coverContainer.addEventListener('mouseenter', () => {
                 clearInterval(slideInterval);
@@ -865,7 +758,7 @@
                 slideInterval = setInterval(rotateSlides, 5000);
             });
         });
-        // Mobile menu toggle
+
         document.addEventListener('DOMContentLoaded', function () {
             const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
             const navLinks = document.querySelector('.nav-links');
@@ -874,34 +767,27 @@
                 navLinks.classList.toggle('active');
             });
 
-            // Theme toggle
             const themeToggle = document.getElementById('theme-toggle');
             const body = document.body;
 
-            // Check for saved theme preference
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme) {
                 body.classList.add(savedTheme);
                 updateThemeToggle(savedTheme);
             }
 
-            // Check system preference if no saved preference
             if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 body.classList.add('dark-mode');
                 updateThemeToggle('dark-mode');
             }
 
-            // Toggle theme on button click
             themeToggle.addEventListener('click', () => {
                 body.classList.toggle('dark-mode');
-
-                // Save preference
                 const currentTheme = body.classList.contains('dark-mode') ? 'dark-mode' : '';
                 localStorage.setItem('theme', currentTheme);
                 updateThemeToggle(currentTheme);
             });
 
-            // Update theme toggle icon and text
             function updateThemeToggle(theme) {
                 if (theme === 'dark-mode') {
                     themeToggle.innerHTML = '☀️';
@@ -911,22 +797,8 @@
                     themeToggle.title = 'Switch to Dark Mode';
                 }
             }
-
-            // Listen for system theme changes
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-                if (!localStorage.getItem('theme')) {
-                    if (e.matches) {
-                        body.classList.add('dark-mode');
-                        updateThemeToggle('dark-mode');
-                    } else {
-                        body.classList.remove('dark-mode');
-                        updateThemeToggle('');
-                    }
-                }
-            });
         });
     </script>
-    </head>
 </body>
 
 </html>
